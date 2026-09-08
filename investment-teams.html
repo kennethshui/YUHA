@@ -780,6 +780,33 @@
     }
     </style>
 
+
+    <style id="yuha-nav-consistency">
+      /* Keep desktop nav identical and on one line across all pages */
+      .header-display-desktop .header-nav-list {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 1.1vw !important;
+      }
+      .header-display-desktop .header-nav-item {
+        flex: 0 0 auto !important;
+      }
+      .header-display-desktop .header-nav-item a {
+        white-space: nowrap !important;
+        font-size: clamp(13px, 1.05vw, 16px) !important;
+        letter-spacing: 0 !important;
+      }
+      @media (max-width: 1100px) {
+        .header-display-desktop .header-nav-list {
+          gap: 0.7vw !important;
+        }
+        .header-display-desktop .header-nav-item a {
+          font-size: 13px !important;
+        }
+      }
+    </style>
+
 </head>
 
 <body id="collection-64b1a803798ab025572c819a" class="
