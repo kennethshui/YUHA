@@ -495,169 +495,140 @@
     <link rel="stylesheet" type="text/css" href="https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1728407958569-DI71YIND73BBQN7RBZCZ/static.css">
 
     <style id="yuha-nav-consistency">
-      /* Solid identical header on every page */
-      #header,
-      .header,
-      .header .header-background,
-      .header-announcement-bar-wrapper,
-      body.tweak-transparent-header .header-announcement-bar-wrapper,
-      body.tweak-transparent-header #header,
-      body.tweak-transparent-header .header-background {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
+      /* Hide Squarespace desktop header chrome; we render our own */
+      .header-display-desktop {
+        display: none !important;
       }
-      .header .header-background { opacity: 1 !important; }
-
-      .header-display-desktop .header-title-nav-wrapper {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr) !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 1400px !important;
-        margin: 0 auto !important;
-        gap: 1.5rem !important;
-        padding: 0.85rem 1.5rem !important;
-        box-sizing: border-box !important;
-      }
-      .header-display-desktop .yuha-nav-left {
-        grid-column: 1 !important;
-        justify-self: stretch !important;
-        width: 100% !important;
-      }
-      .header-display-desktop .yuha-nav-right {
-        grid-column: 3 !important;
-        justify-self: stretch !important;
-        width: 100% !important;
-      }
-      .header-display-desktop .header-nav,
-      .header-display-desktop .header-nav-wrapper {
-        display: block !important;
-        width: 100% !important;
-      }
-      .header-display-desktop .yuha-nav-left .header-nav-list { justify-content: flex-start !important; }
-      .header-display-desktop .yuha-nav-right .header-nav-list { justify-content: flex-end !important; }
-      .header-display-desktop .header-nav-list {
+      /* Keep mobile burger header */
+      .header-display-mobile {
         display: flex !important;
-        flex-wrap: nowrap !important;
+      }
+      @media (min-width: 1025px) {
+        .header-display-mobile {
+          display: none !important;
+        }
+        /* Reserve space for our fixed custom header */
+        body {
+          padding-top: 84px !important;
+        }
+        #header,
+        .header {
+          min-height: 0 !important;
+          height: 0 !important;
+          overflow: visible !important;
+        }
+        .header .header-announcement-bar-wrapper,
+        .header .header-inner {
+          min-height: 0 !important;
+          height: 0 !important;
+          padding: 0 !important;
+          border: 0 !important;
+        }
+        .header .header-background {
+          display: none !important;
+        }
+      }
+
+      #yuha-site-header {
+        display: none;
+      }
+      @media (min-width: 1025px) {
+        #yuha-site-header {
+          display: grid !important;
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          z-index: 99999 !important;
+          grid-template-columns: 1fr auto 1fr !important;
+          align-items: center !important;
+          gap: 2rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 1.15rem 2.5rem !important;
+          background: #ffffff !important;
+          border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+          font-family: "Times New Roman", Times, serif !important;
+        }
+      }
+      #yuha-site-header .yuha-nav {
+        display: flex !important;
         align-items: center !important;
-        gap: clamp(0.7rem, 1.2vw, 1.6rem) !important;
+        flex-wrap: nowrap !important;
+        gap: 2.25rem !important;
         margin: 0 !important;
         padding: 0 !important;
+        list-style: none !important;
       }
-      .header-display-desktop .header-nav-item {
-        flex: 0 0 auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        float: none !important;
+      #yuha-site-header .yuha-nav--left {
+        justify-content: flex-start !important;
       }
-      .header-display-desktop .header-nav-item a {
+      #yuha-site-header .yuha-nav--right {
+        justify-content: flex-end !important;
+      }
+      #yuha-site-header .yuha-nav a {
         font-family: "Times New Roman", Times, serif !important;
+        font-size: 18px !important;
         font-weight: 400 !important;
-        font-style: normal !important;
-        font-size: 15px !important;
-        letter-spacing: 0 !important;
-        text-transform: none !important;
+        line-height: 1.2 !important;
         color: #000000 !important;
         text-decoration: none !important;
-        line-height: 1.2 !important;
         white-space: nowrap !important;
-        opacity: 1 !important;
-        border-bottom: 1px solid transparent !important;
-        padding-bottom: 2px !important;
-        background: none !important;
+        border-bottom: 2px solid transparent !important;
+        padding-bottom: 3px !important;
       }
-      .header-display-desktop .header-nav-item--active a,
-      .header-display-desktop .header-nav-item a[aria-current="page"] {
+      #yuha-site-header .yuha-nav a.is-active {
         border-bottom-color: #000000 !important;
       }
-
-      /* CRITICAL: keep YUHA horizontal — Squarespace was squeezing this to ~1 character wide */
-      .header-display-desktop .header-title {
-        grid-column: 2 !important;
-        justify-self: center !important;
-        align-self: center !important;
-        position: static !important;
-        transform: none !important;
-        margin: 0 !important;
-        padding: 0 0.5rem !important;
-        flex: 0 0 auto !important;
-        float: none !important;
-        width: max-content !important;
-        min-width: max-content !important;
-        max-width: none !important;
-        height: auto !important;
-        writing-mode: horizontal-tb !important;
-        text-orientation: mixed !important;
-      }
-      .header-display-desktop .header-title-text {
-        display: block !important;
-        width: max-content !important;
-        min-width: max-content !important;
-        max-width: none !important;
-        height: auto !important;
-        white-space: nowrap !important;
-        writing-mode: horizontal-tb !important;
-      }
-      .header-display-desktop #site-title,
-      .header-display-desktop .header-title-text a,
-      .header-display-mobile #site-title {
+      #yuha-site-header .yuha-brand {
         display: inline-block !important;
-        width: max-content !important;
-        min-width: max-content !important;
-        max-width: none !important;
-        height: auto !important;
-        white-space: nowrap !important;
-        writing-mode: horizontal-tb !important;
-        text-orientation: mixed !important;
-        word-break: keep-all !important;
-        overflow-wrap: normal !important;
         font-family: "Times New Roman", Times, serif !important;
-        font-size: 28px !important;
+        font-size: 42px !important;
         font-weight: 400 !important;
-        font-style: normal !important;
-        letter-spacing: 0.12em !important;
+        letter-spacing: 0.14em !important;
         line-height: 1 !important;
         color: #000000 !important;
         text-decoration: none !important;
-        text-transform: none !important;
-        opacity: 1 !important;
+        white-space: nowrap !important;
+        writing-mode: horizontal-tb !important;
+        width: max-content !important;
+        min-width: max-content !important;
       }
-      .header-display-desktop .header-actions { display: none !important; }
-
-      @media (max-width: 1100px) {
-        .header-display-desktop .header-nav-item a { font-size: 13px !important; }
-        .header-display-desktop #site-title,
-        .header-display-desktop .header-title-text a { font-size: 24px !important; }
-        .header-display-desktop .header-nav-list { gap: 0.55rem !important; }
+      /* Mobile Squarespace title: keep horizontal too */
+      .header-display-mobile #site-title {
+        white-space: nowrap !important;
+        writing-mode: horizontal-tb !important;
+        display: inline-block !important;
+        width: max-content !important;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 26px !important;
+        letter-spacing: 0.12em !important;
+        color: #000 !important;
+        text-decoration: none !important;
+      }
+      .header-display-mobile .header-title,
+      .header-display-mobile .header-title-text {
+        width: max-content !important;
+        min-width: max-content !important;
+        white-space: nowrap !important;
       }
     </style>
 
-
     <script id="yuha-title-lock">
     (function () {
-      function lockYuhaTitle() {
-        document.querySelectorAll("#site-title").forEach(function (el) {
+      function lock() {
+        document.querySelectorAll(".header-display-mobile #site-title").forEach(function (el) {
+          el.textContent = "YUHA";
           el.style.setProperty("white-space", "nowrap", "important");
-          el.style.setProperty("display", "inline-block", "important");
           el.style.setProperty("writing-mode", "horizontal-tb", "important");
+          el.style.setProperty("display", "inline-block", "important");
           el.style.setProperty("width", "max-content", "important");
-          el.style.setProperty("min-width", "max-content", "important");
-          el.style.setProperty("max-width", "none", "important");
-          el.style.setProperty("height", "auto", "important");
-        });
-        document.querySelectorAll(".header-title, .header-title-text").forEach(function (el) {
-          el.style.setProperty("width", "max-content", "important");
-          el.style.setProperty("min-width", "max-content", "important");
-          el.style.setProperty("max-width", "none", "important");
-          el.style.setProperty("white-space", "nowrap", "important");
-          el.style.setProperty("height", "auto", "important");
         });
       }
-      lockYuhaTitle();
-      document.addEventListener("DOMContentLoaded", lockYuhaTitle);
-      window.addEventListener("load", lockYuhaTitle);
-      [100, 400, 1000, 2000, 4000].forEach(function (ms) { setTimeout(lockYuhaTitle, ms); });
-      new MutationObserver(lockYuhaTitle).observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: ["style", "class"] });
+      lock();
+      document.addEventListener("DOMContentLoaded", lock);
+      window.addEventListener("load", lock);
+      [200, 800, 2000].forEach(function (ms) { setTimeout(lock, ms); });
     })();
     </script>
 
@@ -675,6 +646,13 @@
         
       
     " tabindex="-1">
+
+<header id="yuha-site-header" role="banner">
+  <nav class="yuha-nav yuha-nav--left" aria-label="Primary left"><a href="/about">About</a><a href="/the-board" class="is-active" aria-current="page">The Board</a><a href="/investment-teams">Investment Teams</a></nav>
+  <a class="yuha-brand" href="/">YUHA</a>
+  <nav class="yuha-nav yuha-nav--right" aria-label="Primary right"><a href="/speakers">Featured Speakers</a><a href="/sponsors">Sponsors</a><a href="/apply">Apply</a></nav>
+</header>
+
     <div id="siteWrapper" class="clearfix site-wrapper">
 
         <div id="floatingCart" class="floating-cart hidden">
