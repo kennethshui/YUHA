@@ -604,52 +604,79 @@
         
 
         /* --- Sponsors Page --- */
+        /* One-viewport composition: gold + silver side-by-side.
+           Logos stay large; layout uses width instead of tall stacked cards. */
+        body:has(.sponsors-page) {
+            overflow-x: hidden;
+        }
+        body:has(.sponsors-page) #siteWrapper {
+            min-height: 0 !important;
+            height: auto !important;
+        }
+        .page-section.background-white:has(.sponsors-page) {
+            min-height: calc(100svh - 84px);
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
         .sponsors-page {
             --sponsor-navy: #0a2540;
             --sponsor-gold: #b08d3c;
             --sponsor-silver: #7a8088;
-            max-width: 980px;
+            --sponsor-ink: #111;
+            width: 100%;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 72px 24px 100px;
+            padding: clamp(24px, 3.5vh, 40px) clamp(20px, 3vw, 32px);
+            box-sizing: border-box;
             font-family: "Times New Roman", Times, serif;
-            color: #111;
+            color: var(--sponsor-ink);
         }
         .sponsors-page__intro {
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: clamp(22px, 3.5vh, 36px);
+            animation: sponsors-fade-up 0.7s ease both;
         }
         .sponsors-page__title {
-            margin: 0 0 20px;
-            font-size: clamp(40px, 5vw, 72px);
+            margin: 0 0 10px;
+            font-size: clamp(40px, 4.8vw, 64px);
             font-weight: 400;
             letter-spacing: 0;
-            line-height: 1.1;
+            line-height: 1.05;
             font-family: "Times New Roman", Times, serif;
         }
         .sponsors-page__subtitle {
             margin: 0 auto;
-            max-width: none;
-            font-size: clamp(13px, 1.55vw, 19px);
-            line-height: 1.55;
+            max-width: 38rem;
+            font-size: clamp(14px, 1.4vw, 17px);
+            line-height: 1.45;
             color: #444;
-            white-space: nowrap;
+        }
+        .sponsors-page__tiers {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: clamp(16px, 2vw, 24px);
+            align-items: stretch;
         }
         .sponsor-tier {
-            margin: 0 0 56px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 0;
+            animation: sponsors-fade-up 0.75s ease both;
         }
-        .sponsor-tier:last-child {
-            margin-bottom: 0;
-        }
+        .sponsor-tier--gold { animation-delay: 0.08s; }
+        .sponsor-tier--silver { animation-delay: 0.16s; }
         .sponsor-tier__header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
+            gap: 14px;
         }
         .sponsor-tier__label {
             margin: 0;
             flex: 0 0 auto;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -672,54 +699,127 @@
             color: var(--sponsor-silver);
         }
         .sponsor-tier__logos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: stretch;
-            gap: 24px;
+            flex: 1 1 auto;
+            display: grid;
+            gap: 12px;
+            min-height: 0;
+        }
+        .sponsor-tier--gold .sponsor-tier__logos {
+            grid-template-columns: 1fr;
+        }
+        .sponsor-tier--silver .sponsor-tier__logos {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
         }
         .sponsor-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: min(100%, 320px);
-            aspect-ratio: 4 / 3;
-            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            padding: 24px 28px;
             background: #f7f8fa;
             border: 1px solid rgba(10, 37, 64, 0.08);
             box-sizing: border-box;
+            overflow: hidden;
+            transition: border-color 0.25s ease, transform 0.25s ease;
         }
         .sponsor-tier--gold .sponsor-logo {
-            width: min(100%, 480px);
+            min-height: clamp(220px, 32vh, 300px);
+            padding: 36px 40px;
             background: linear-gradient(180deg, #fcfaf4 0%, #f7f4ea 100%);
             border-color: rgba(176, 141, 60, 0.28);
         }
+        .sponsor-tier--silver .sponsor-logo {
+            min-height: clamp(100px, 14vh, 140px);
+            padding: 20px 28px;
+        }
+        .sponsor-logo:hover {
+            transform: translateY(-2px);
+            border-color: rgba(10, 37, 64, 0.18);
+        }
+        .sponsor-tier--gold .sponsor-logo:hover {
+            border-color: rgba(176, 141, 60, 0.5);
+        }
         .sponsor-logo img {
             display: block;
-            width: 75%;
-            height: 75%;
-            max-width: 75%;
-            max-height: 75%;
+            width: auto;
+            height: auto;
             object-fit: contain;
         }
-        .sponsor-tier--gold .sponsor-logo img,
-        .sponsor-tier--silver .sponsor-logo img {
-            max-height: 75%;
-            max-width: 75%;
+        .sponsor-tier--gold .sponsor-logo img {
+            width: clamp(170px, 20vw, 240px);
+            max-height: 180px;
         }
-        @media (max-width: 640px) {
+        .sponsor-tier--silver .sponsor-logo img {
+            max-width: 100%;
+            height: clamp(48px, 6vh, 60px);
+            width: auto;
+        }
+        /* Ultra-wide wordmarks — fill the panel width */
+        .sponsor-logo--wide img {
+            width: 92%;
+            max-width: 92%;
+            height: auto;
+            max-height: 52px;
+        }
+        @keyframes sponsors-fade-up {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .sponsors-page__intro,
+            .sponsor-tier,
+            .sponsor-logo {
+                animation: none !important;
+                transition: none !important;
+            }
+            .sponsor-logo:hover { transform: none; }
+        }
+        @media (max-width: 1024px) {
+            .page-section.background-white:has(.sponsors-page) {
+                min-height: calc(100svh - 64px);
+            }
+        }
+        @media (max-width: 820px) {
+            .page-section.background-white:has(.sponsors-page) {
+                min-height: auto;
+                align-items: flex-start;
+            }
             .sponsors-page {
-                padding: 48px 18px 72px;
+                padding: 36px 18px 48px;
             }
-            .sponsors-page__intro {
-                margin-bottom: 44px;
+            .sponsors-page__tiers {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
-            .sponsor-tier {
-                margin-bottom: 40px;
-            }
-            .sponsor-logo,
             .sponsor-tier--gold .sponsor-logo {
-                width: 100%;
+                min-height: 180px;
+                padding: 32px 24px;
+            }
+            .sponsor-tier--silver .sponsor-tier__logos {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: none;
+            }
+            .sponsor-tier--silver .sponsor-logo {
+                min-height: 110px;
+                padding: 18px 14px;
+            }
+            .sponsor-tier--gold .sponsor-logo img {
+                width: min(200px, 50vw);
+            }
+            .sponsor-tier--silver .sponsor-logo img,
+            .sponsor-logo--wide img {
+                width: auto;
+                max-width: 100%;
+                height: auto;
+                max-height: 44px;
+            }
+        }
+        @media (max-width: 520px) {
+            .sponsor-tier--silver .sponsor-tier__logos {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1759,29 +1859,31 @@
                             <p class="sponsors-page__subtitle">Thank you to the firms that make YUHA’s programming and operations possible.</p>
                         </div>
 
-                        <div class="sponsor-tier sponsor-tier--gold">
-                            <div class="sponsor-tier__header">
-                                <h2 class="sponsor-tier__label">Gold Sponsor</h2>
-                                <hr class="sponsor-tier__rule" />
-                            </div>
-                            <div class="sponsor-tier__logos">
-                                <div class="sponsor-logo">
-                                    <img src="/img/logos/kalshi.png" alt="Kalshi">
+                        <div class="sponsors-page__tiers">
+                            <div class="sponsor-tier sponsor-tier--gold">
+                                <div class="sponsor-tier__header">
+                                    <h2 class="sponsor-tier__label">Gold Sponsor</h2>
+                                    <hr class="sponsor-tier__rule" />
+                                </div>
+                                <div class="sponsor-tier__logos">
+                                    <div class="sponsor-logo">
+                                        <img src="/img/logos/kalshi.png" alt="Kalshi">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="sponsor-tier sponsor-tier--silver">
-                            <div class="sponsor-tier__header">
-                                <h2 class="sponsor-tier__label">Silver Sponsors</h2>
-                                <hr class="sponsor-tier__rule" />
-                            </div>
-                            <div class="sponsor-tier__logos">
-                                <div class="sponsor-logo">
-                                    <img src="/img/logos/brevan-howard.png" alt="Brevan Howard">
+                            <div class="sponsor-tier sponsor-tier--silver">
+                                <div class="sponsor-tier__header">
+                                    <h2 class="sponsor-tier__label">Silver Sponsors</h2>
+                                    <hr class="sponsor-tier__rule" />
                                 </div>
-                                <div class="sponsor-logo">
-                                    <img src="/img/logos/sig.png" alt="SIG">
+                                <div class="sponsor-tier__logos">
+                                    <div class="sponsor-logo sponsor-logo--wide">
+                                        <img src="/img/logos/brevan-howard.png" alt="Brevan Howard">
+                                    </div>
+                                    <div class="sponsor-logo">
+                                        <img src="/img/logos/sig.png" alt="SIG">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1791,6 +1893,10 @@
         </main>
 
         <footer class="sections" id="footer-sections" data-footer-sections>
+            <div class="yuha-site-footer" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background-color:#23344E;color:#ffffff;padding:30px 40px;font-family:Georgia,'Times New Roman',Times,serif;font-size:20px;box-sizing:border-box;width:100%;">
+                <span>© 2024 Yale Undergraduate Hedge Fund Association | Designed by Kenneth Shui</span>
+                <a href="mailto:yaleuha@gmail.com" style="color:#ffffff;text-decoration:none;">Contact us: yaleuha@gmail.com</a>
+            </div>
         </footer>
 
     </div>
@@ -1813,7 +1919,7 @@
         
         .placements-marquee { overflow: hidden; background: #ffffff; padding: 28px 0; border-radius: 12px; margin-bottom: 54px;
           box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-        .marquee-track { display: inline-flex; align-items: center; gap: 80px; animation: placements-scroll 80s linear infinite;
+        .marquee-track { display: inline-flex; align-items: center; gap: 80px; animation: placements-scroll 95s linear infinite;
           will-change: transform; }
         .placements-marquee:hover .marquee-track { animation-play-state: paused; }
         .marquee-track img { height: 78px; width: auto; object-fit: contain; opacity: .95; transition: transform .25s ease, opacity .25s ease; }
