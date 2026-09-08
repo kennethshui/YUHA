@@ -8,6 +8,7 @@
     <title>Sponsors &mdash; YUHA</title>
     <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model"/>
     <link rel="icon" href="/img/logos/favicon.png" type="image/png"/>
+    <link rel="icon" href="/favicon.ico" sizes="any"/>
     <link rel="apple-touch-icon" href="/img/logos/apple-touch-icon.png"/>
     <link rel="canonical" href="https://www.yuhafinance.com/sponsors"/>
     <meta property="og:site_name" content="YUHA"/>
@@ -684,10 +685,12 @@
         }
         .sponsors-page__subtitle {
             margin: 0 auto;
-            max-width: 36rem;
-            font-size: clamp(14px, 1.5vw, 18px);
+            max-width: none;
+            font-size: clamp(13px, 1.55vw, 18px);
             line-height: 1.45;
             color: #444;
+            text-align: center;
+            white-space: nowrap;
         }
         .sponsors-page__tiers {
             display: flex;
@@ -796,6 +799,9 @@
         @media (max-width: 640px) {
             .sponsors-page {
                 padding: 28px 18px 24px;
+            }
+            .sponsors-page__subtitle {
+                font-size: 12px;
             }
             .sponsor-tier--silver .sponsor-tier__logos {
                 grid-template-columns: 1fr;
