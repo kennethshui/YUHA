@@ -509,10 +509,11 @@
 
         .section-title {
             text-align: center;
-            font-size: 50px;
+            font-size: clamp(40px, 5vw, 72px);
             font-weight: 400;
-            margin-bottom: 5px;
-            font-family: 'Times New Roman', serif;
+            margin: 0 0 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.1;
         }
 
         .section-subtitle {
@@ -598,7 +599,7 @@
             }
 
             .section-title {
-                font-size: 40px;
+                font-size: clamp(40px, 5vw, 72px);
             }
         }
         </style>
@@ -1754,7 +1755,7 @@
         
         .placements-marquee { overflow: hidden; background: #ffffff; padding: 28px 0; border-radius: 12px; margin-bottom: 54px;
           box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-        .marquee-track { display: inline-flex; align-items: center; gap: 80px; animation: placements-scroll 60s linear infinite;
+        .marquee-track { display: inline-flex; align-items: center; gap: 80px; animation: placements-scroll 80s linear infinite;
           will-change: transform; }
         .placements-marquee:hover .marquee-track { animation-play-state: paused; }
         .marquee-track img { height: 78px; width: auto; object-fit: contain; opacity: .95; transition: transform .25s ease, opacity .25s ease; }

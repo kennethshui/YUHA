@@ -509,10 +509,11 @@
 
         .section-title {
             text-align: center;
-            font-size: 50px;
+            font-size: clamp(40px, 5vw, 72px);
             font-weight: 400;
-            margin-bottom: 5px;
-            font-family: 'Times New Roman', serif;
+            margin: 0 0 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.1;
         }
 
         .section-subtitle {
@@ -598,17 +599,18 @@
             }
 
             .section-title {
-                font-size: 40px;
+                font-size: clamp(40px, 5vw, 72px);
             }
         }
         
         /* --- Investment Teams Section Styles --- */
         .team-section-title {
             text-align: center;
-            font-size: 50px;
+            font-size: clamp(40px, 5vw, 72px);
             font-weight: 400;
-            margin: 0px 0 10px;
-            font-family: 'Times New Roman', serif;
+            margin: 0 0 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.1;
         }
         .team-section-intro {
             max-width: 800px;
