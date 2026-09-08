@@ -94,27 +94,96 @@
   </style>
 
     <style id="yuha-nav-consistency">
-      /* Keep desktop nav identical and on one line across all pages */
+      /* Unified header: same font/size/style on every page, split around logo */
+      .header-display-desktop .header-title-nav-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 1.5rem !important;
+      }
+      .header-display-desktop .yuha-nav-left {
+        grid-column: 1 !important;
+        justify-self: start !important;
+        width: 100% !important;
+      }
+      .header-display-desktop .header-title {
+        grid-column: 2 !important;
+        justify-self: center !important;
+        text-align: center !important;
+        margin: 0 !important;
+        position: static !important;
+        transform: none !important;
+      }
+      .header-display-desktop .yuha-nav-right {
+        grid-column: 3 !important;
+        justify-self: end !important;
+        width: 100% !important;
+      }
+      .header-display-desktop .header-nav-wrapper {
+        display: block !important;
+        width: 100% !important;
+      }
+      .header-display-desktop .yuha-nav-left .header-nav-list {
+        justify-content: flex-start !important;
+      }
+      .header-display-desktop .yuha-nav-right .header-nav-list {
+        justify-content: flex-end !important;
+      }
       .header-display-desktop .header-nav-list {
         display: flex !important;
         flex-wrap: nowrap !important;
         align-items: center !important;
-        gap: 1.1vw !important;
+        gap: clamp(0.75rem, 1.4vw, 1.75rem) !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .header-display-desktop .header-nav-item {
         flex: 0 0 auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .header-display-desktop .header-nav-item a,
+      .header-display-desktop .header-title-text a,
+      .header-display-desktop #site-title {
+        font-family: "Times New Roman", Times, serif !important;
+        font-weight: 400 !important;
+        font-style: normal !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+        color: #000 !important;
+        text-decoration: none !important;
+        line-height: 1.2 !important;
       }
       .header-display-desktop .header-nav-item a {
+        font-size: 15px !important;
         white-space: nowrap !important;
-        font-size: clamp(13px, 1.05vw, 16px) !important;
-        letter-spacing: 0 !important;
+        opacity: 1 !important;
+        border-bottom: 1px solid transparent !important;
+        padding-bottom: 2px !important;
+      }
+      .header-display-desktop .header-nav-item--active a,
+      .header-display-desktop .header-nav-item a[aria-current="page"] {
+        border-bottom-color: #000 !important;
+      }
+      .header-display-desktop .header-title-text a,
+      .header-display-desktop #site-title {
+        font-size: 28px !important;
+        font-weight: 400 !important;
+      }
+      .header-display-desktop .header-actions {
+        display: none !important;
       }
       @media (max-width: 1100px) {
-        .header-display-desktop .header-nav-list {
-          gap: 0.7vw !important;
-        }
         .header-display-desktop .header-nav-item a {
           font-size: 13px !important;
+        }
+        .header-display-desktop .header-title-text a,
+        .header-display-desktop #site-title {
+          font-size: 24px !important;
+        }
+        .header-display-desktop .header-nav-list {
+          gap: 0.65rem !important;
         }
       }
     </style>
@@ -1010,19 +1079,16 @@
                         <!-- Social -->
 
                         <!-- Title and nav wrapper -->
-                        <div class="header-title-nav-wrapper">
+                                                <div class="header-title-nav-wrapper">
 
-                            <!-- Nav -->
-                            <div class="header-nav">
+                            <div class="header-nav yuha-nav-left">
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
-
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/about" data-animation-role="header-element">
                                                     About
                                                   </a>
                                         </div>
-
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/the-board" data-animation-role="header-element">
                                                     The Board
@@ -1033,40 +1099,41 @@
                                                     Investment Teams
                                                   </a>
                                         </div>
+                                    </nav>
+                                </div>
+                            </div>
 
+                            <div class="header-title" data-animation-role="header-element">
+                                <div class="header-title-text">
+                                    <a id="site-title" href="/" data-animation-role="header-element">YUHA</a>
+                                </div>
+                            </div>
 
+                            <div class="header-nav yuha-nav-right">
+                                <div class="header-nav-wrapper">
+                                    <nav class="header-nav-list">
                                         <div class="header-nav-item header-nav-item--collection header-nav-item--active">
-                                          <a href="/speakers" data-animation-role="header-element" aria-current="page">
-                                                  Featured Speakers
-                                                </a>
+                                            <a href="/speakers" data-animation-role="header-element" aria-current="page">
+                                                    Featured Speakers
+                                                  </a>
                                         </div>
-
+                                        <div class="header-nav-item header-nav-item--collection">
+                                            <a href="/sponsors" data-animation-role="header-element">
+                                                    Sponsors
+                                                  </a>
+                                        </div>
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/apply" data-animation-role="header-element">
                                                     Apply
                                                   </a>
                                         </div>
-
                                     </nav>
                                 </div>
                             </div>
 
-                            <!-- Title -->
-
-                            <div class="
-                                                  header-title
-                                                  
-                                                " data-animation-role="header-element">
-
-                                <div class="header-title-text">
-                                    <a id="site-title" href="/" data-animation-role="header-element">YUHA</a>
-                                </div>
-
-                            </div>
-
                         </div>
 
-                        <!-- Actions -->
+<!-- Actions -->
                         <div class="header-actions header-actions--right">
 
                             <div class="showOnMobile">
@@ -1112,19 +1179,16 @@
                         <!-- Social -->
 
                         <!-- Title and nav wrapper -->
-                        <div class="header-title-nav-wrapper">
+                                                <div class="header-title-nav-wrapper">
 
-                            <!-- Nav -->
-                            <div class="header-nav">
+                            <div class="header-nav yuha-nav-left">
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
-
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/about" data-animation-role="header-element">
                                                     About
                                                   </a>
                                         </div>
-
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/the-board" data-animation-role="header-element">
                                                     The Board
@@ -1135,40 +1199,41 @@
                                                     Investment Teams
                                                   </a>
                                         </div>
+                                    </nav>
+                                </div>
+                            </div>
 
+                            <div class="header-title" data-animation-role="header-element">
+                                <div class="header-title-text">
+                                    <a id="site-title" href="/" data-animation-role="header-element">YUHA</a>
+                                </div>
+                            </div>
 
+                            <div class="header-nav yuha-nav-right">
+                                <div class="header-nav-wrapper">
+                                    <nav class="header-nav-list">
                                         <div class="header-nav-item header-nav-item--collection header-nav-item--active">
-                                          <a href="/speakers" data-animation-role="header-element" aria-current="page">
-                                                  Featured Speakers
-                                                </a>
+                                            <a href="/speakers" data-animation-role="header-element" aria-current="page">
+                                                    Featured Speakers
+                                                  </a>
                                         </div>
-
+                                        <div class="header-nav-item header-nav-item--collection">
+                                            <a href="/sponsors" data-animation-role="header-element">
+                                                    Sponsors
+                                                  </a>
+                                        </div>
                                         <div class="header-nav-item header-nav-item--collection">
                                             <a href="/apply" data-animation-role="header-element">
                                                     Apply
                                                   </a>
                                         </div>
-
                                     </nav>
                                 </div>
                             </div>
 
-                            <!-- Title -->
-
-                            <div class="
-                                                  header-title
-                                                  
-                                                " data-animation-role="header-element">
-
-                                <div class="header-title-text">
-                                    <a id="site-title" href="/" data-animation-role="header-element">YUHA</a>
-                                </div>
-
-                            </div>
-
                         </div>
 
-                        <!-- Actions -->
+<!-- Actions -->
                         <div class="header-actions header-actions--right">
 
                             <div class="showOnMobile">
@@ -1466,8 +1531,7 @@
                         <div data-folder="root" class="header-menu-nav-folder">
                             <div class="header-menu-nav-folder-content">
                                 <!-- Menu Navigation -->
-                                <div class="header-menu-nav-wrapper">
-
+                                                                <div class="header-menu-nav-wrapper">
                                     <div class="container header-menu-nav-item header-menu-nav-item--collection">
                                         <a href="/about">
                                             <div class="header-menu-nav-item-content">
@@ -1475,7 +1539,6 @@
                                                             </div>
                                         </a>
                                     </div>
-
                                     <div class="container header-menu-nav-item header-menu-nav-item--collection">
                                         <a href="/the-board">
                                             <div class="header-menu-nav-item-content">
@@ -1490,16 +1553,20 @@
                                                             </div>
                                         </a>
                                     </div>
-
-
                                     <div class="container header-menu-nav-item header-menu-nav-item--collection header-menu-nav-item--active">
-                                      <a href="/speakers" aria-current="page">
-                                          <div class="header-menu-nav-item-content">
-                                                            Featured Speakers
-                                                          </div>
-                                      </a>
+                                        <a href="/speakers" aria-current="page">
+                                            <div class="header-menu-nav-item-content">
+                                                              Featured Speakers
+                                                            </div>
+                                        </a>
                                     </div>
-
+                                    <div class="container header-menu-nav-item header-menu-nav-item--collection">
+                                        <a href="/sponsors">
+                                            <div class="header-menu-nav-item-content">
+                                                              Sponsors
+                                                            </div>
+                                        </a>
+                                    </div>
                                     <div class="container header-menu-nav-item header-menu-nav-item--collection">
                                         <a href="/apply">
                                             <div class="header-menu-nav-item-content">
@@ -1507,10 +1574,8 @@
                                                             </div>
                                         </a>
                                     </div>
-
                                 </div>
-
-                            </div>
+</div>
 
                         </div>
                     </nav>
