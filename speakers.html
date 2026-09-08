@@ -94,32 +94,27 @@
   </style>
 
     <style id="yuha-nav-consistency">
-      /* Solid, identical header on every page */
+      /* Solid identical header on every page */
       #header,
       .header,
       .header .header-background,
-      .header-announcement-bar-wrapper {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-      }
-      .header .header-background {
-        opacity: 1 !important;
-      }
+      .header-announcement-bar-wrapper,
       body.tweak-transparent-header .header-announcement-bar-wrapper,
       body.tweak-transparent-header #header,
       body.tweak-transparent-header .header-background {
         background: #ffffff !important;
         background-color: #ffffff !important;
       }
+      .header .header-background { opacity: 1 !important; }
 
       .header-display-desktop .header-title-nav-wrapper {
         display: grid !important;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+        grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr) !important;
         align-items: center !important;
         width: 100% !important;
         max-width: 1400px !important;
         margin: 0 auto !important;
-        gap: 1.25rem !important;
+        gap: 1.5rem !important;
         padding: 0.85rem 1.5rem !important;
         box-sizing: border-box !important;
       }
@@ -127,45 +122,19 @@
         grid-column: 1 !important;
         justify-self: stretch !important;
         width: 100% !important;
-        max-width: none !important;
-      }
-      .header-display-desktop .header-title {
-        grid-column: 2 !important;
-        justify-self: center !important;
-        align-self: center !important;
-        text-align: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: static !important;
-        transform: none !important;
-        width: auto !important;
-        min-width: 140px !important;
-        max-width: none !important;
-        flex: 0 0 auto !important;
-      }
-      .header-display-desktop .header-title-text {
-        width: auto !important;
-        max-width: none !important;
-        white-space: nowrap !important;
       }
       .header-display-desktop .yuha-nav-right {
         grid-column: 3 !important;
         justify-self: stretch !important;
         width: 100% !important;
-        max-width: none !important;
       }
       .header-display-desktop .header-nav,
       .header-display-desktop .header-nav-wrapper {
         display: block !important;
         width: 100% !important;
-        max-width: none !important;
       }
-      .header-display-desktop .yuha-nav-left .header-nav-list {
-        justify-content: flex-start !important;
-      }
-      .header-display-desktop .yuha-nav-right .header-nav-list {
-        justify-content: flex-end !important;
-      }
+      .header-display-desktop .yuha-nav-left .header-nav-list { justify-content: flex-start !important; }
+      .header-display-desktop .yuha-nav-right .header-nav-list { justify-content: flex-end !important; }
       .header-display-desktop .header-nav-list {
         display: flex !important;
         flex-wrap: nowrap !important;
@@ -200,37 +169,65 @@
       .header-display-desktop .header-nav-item a[aria-current="page"] {
         border-bottom-color: #000000 !important;
       }
-      .header-display-desktop .yuha-logo-link {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-decoration: none !important;
-        line-height: 0 !important;
+
+      /* CRITICAL: keep YUHA horizontal — Squarespace was squeezing this to ~1 character wide */
+      .header-display-desktop .header-title {
+        grid-column: 2 !important;
+        justify-self: center !important;
+        align-self: center !important;
+        position: static !important;
+        transform: none !important;
+        margin: 0 !important;
+        padding: 0 0.5rem !important;
+        flex: 0 0 auto !important;
+        float: none !important;
+        width: max-content !important;
+        min-width: max-content !important;
+        max-width: none !important;
+        height: auto !important;
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
       }
-      .header-display-desktop .yuha-logo {
+      .header-display-desktop .header-title-text {
         display: block !important;
-        height: 36px !important;
-        width: auto !important;
-        max-width: 180px !important;
+        width: max-content !important;
+        min-width: max-content !important;
+        max-width: none !important;
+        height: auto !important;
+        white-space: nowrap !important;
+        writing-mode: horizontal-tb !important;
       }
-      .header-display-desktop .header-actions {
-        display: none !important;
+      .header-display-desktop #site-title,
+      .header-display-desktop .header-title-text a,
+      .header-display-mobile #site-title {
+        display: inline-block !important;
+        width: max-content !important;
+        min-width: max-content !important;
+        max-width: none !important;
+        height: auto !important;
+        white-space: nowrap !important;
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
+        word-break: keep-all !important;
+        overflow-wrap: normal !important;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 28px !important;
+        font-weight: 400 !important;
+        font-style: normal !important;
+        letter-spacing: 0.12em !important;
+        line-height: 1 !important;
+        color: #000000 !important;
+        text-decoration: none !important;
+        text-transform: none !important;
+        opacity: 1 !important;
       }
-      /* Mobile title also uses logo */
-      .header-display-mobile .yuha-logo {
-        height: 28px !important;
-        width: auto !important;
-      }
+      .header-display-desktop .header-actions { display: none !important; }
+
       @media (max-width: 1100px) {
-        .header-display-desktop .header-nav-item a {
-          font-size: 13px !important;
-        }
-        .header-display-desktop .yuha-logo {
-          height: 30px !important;
-        }
-        .header-display-desktop .header-nav-list {
-          gap: 0.55rem !important;
-        }
+        .header-display-desktop .header-nav-item a { font-size: 13px !important; }
+        .header-display-desktop #site-title,
+        .header-display-desktop .header-title-text a { font-size: 24px !important; }
+        .header-display-desktop .header-nav-list { gap: 0.55rem !important; }
       }
     </style>
 
@@ -1149,15 +1146,13 @@
                                 </div>
                             </div>
 
-                            <div class="header-title" data-animation-role="header-element">
-                                                                                                <div class="header-title-text">
-                                    <a id="site-title" class="yuha-logo-link" href="/" data-animation-role="header-element" aria-label="YUHA home">
-                                        <img class="yuha-logo" src="/img/logos/yuha-logo.svg" alt="YUHA"/>
-                                    </a>
+                                                        <div class="header-title" data-animation-role="header-element" style="width:max-content!important;min-width:max-content!important;max-width:none!important;">
+                                <div class="header-title-text" style="white-space:nowrap!important;width:max-content!important;">
+                                    <a id="site-title" href="/" data-animation-role="header-element" style="white-space:nowrap!important;display:inline-block!important;writing-mode:horizontal-tb!important;">YUHA</a>
                                 </div>
                             </div>
 
-                            <div class="header-nav yuha-nav-right">
+<div class="header-nav yuha-nav-right">
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
                                         <div class="header-nav-item header-nav-item--collection header-nav-item--active">
@@ -1251,15 +1246,13 @@
                                 </div>
                             </div>
 
-                            <div class="header-title" data-animation-role="header-element">
-                                                                                                <div class="header-title-text">
-                                    <a id="site-title" class="yuha-logo-link" href="/" data-animation-role="header-element" aria-label="YUHA home">
-                                        <img class="yuha-logo" src="/img/logos/yuha-logo.svg" alt="YUHA"/>
-                                    </a>
+                                                        <div class="header-title" data-animation-role="header-element" style="width:max-content!important;min-width:max-content!important;max-width:none!important;">
+                                <div class="header-title-text" style="white-space:nowrap!important;width:max-content!important;">
+                                    <a id="site-title" href="/" data-animation-role="header-element" style="white-space:nowrap!important;display:inline-block!important;writing-mode:horizontal-tb!important;">YUHA</a>
                                 </div>
                             </div>
 
-                            <div class="header-nav yuha-nav-right">
+<div class="header-nav yuha-nav-right">
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
                                         <div class="header-nav-item header-nav-item--collection header-nav-item--active">
