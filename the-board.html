@@ -632,6 +632,35 @@
       }
     </style>
 
+
+    <script id="yuha-title-lock">
+    (function () {
+      function lockYuhaTitle() {
+        document.querySelectorAll("#site-title").forEach(function (el) {
+          el.style.setProperty("white-space", "nowrap", "important");
+          el.style.setProperty("display", "inline-block", "important");
+          el.style.setProperty("writing-mode", "horizontal-tb", "important");
+          el.style.setProperty("width", "max-content", "important");
+          el.style.setProperty("min-width", "max-content", "important");
+          el.style.setProperty("max-width", "none", "important");
+          el.style.setProperty("height", "auto", "important");
+        });
+        document.querySelectorAll(".header-title, .header-title-text").forEach(function (el) {
+          el.style.setProperty("width", "max-content", "important");
+          el.style.setProperty("min-width", "max-content", "important");
+          el.style.setProperty("max-width", "none", "important");
+          el.style.setProperty("white-space", "nowrap", "important");
+          el.style.setProperty("height", "auto", "important");
+        });
+      }
+      lockYuhaTitle();
+      document.addEventListener("DOMContentLoaded", lockYuhaTitle);
+      window.addEventListener("load", lockYuhaTitle);
+      [100, 400, 1000, 2000, 4000].forEach(function (ms) { setTimeout(lockYuhaTitle, ms); });
+      new MutationObserver(lockYuhaTitle).observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: ["style", "class"] });
+    })();
+    </script>
+
 </head>
 
 <body id="collection-64b1a7417f077c070e6c3690" class="
