@@ -679,44 +679,32 @@
         }
         .sponsor-logo {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 14px;
-            min-width: min(100%, 280px);
-            padding: 36px 40px;
+            width: min(100%, 320px);
+            aspect-ratio: 4 / 3;
+            padding: 0;
             background: #f7f8fa;
             border: 1px solid rgba(10, 37, 64, 0.08);
             box-sizing: border-box;
         }
         .sponsor-tier--gold .sponsor-logo {
-            min-width: min(100%, 420px);
-            padding: 48px 56px;
+            width: min(100%, 480px);
             background: linear-gradient(180deg, #fcfaf4 0%, #f7f4ea 100%);
             border-color: rgba(176, 141, 60, 0.28);
         }
         .sponsor-logo img {
             display: block;
-            width: auto;
-            height: auto;
-            max-width: 100%;
+            width: 75%;
+            height: 75%;
+            max-width: 75%;
+            max-height: 75%;
             object-fit: contain;
         }
-        .sponsor-tier--gold .sponsor-logo img {
-            max-height: 120px;
-            max-width: 320px;
-        }
+        .sponsor-tier--gold .sponsor-logo img,
         .sponsor-tier--silver .sponsor-logo img {
-            max-height: 88px;
-            max-width: 220px;
-        }
-        .sponsor-logo__name {
-            margin: 0;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--sponsor-navy);
-            opacity: 0.75;
+            max-height: 75%;
+            max-width: 75%;
         }
         @media (max-width: 640px) {
             .sponsors-page {
@@ -728,12 +716,9 @@
             .sponsor-tier {
                 margin-bottom: 40px;
             }
-            .sponsor-logo {
-                min-width: 100%;
-                padding: 28px 24px;
-            }
+            .sponsor-logo,
             .sponsor-tier--gold .sponsor-logo {
-                padding: 36px 28px;
+                width: 100%;
             }
         }
     </style>
@@ -1781,7 +1766,6 @@
                             <div class="sponsor-tier__logos">
                                 <div class="sponsor-logo">
                                     <img src="/img/logos/kalshi.png" alt="Kalshi">
-                                    <p class="sponsor-logo__name">Kalshi</p>
                                 </div>
                             </div>
                         </div>
@@ -1794,11 +1778,9 @@
                             <div class="sponsor-tier__logos">
                                 <div class="sponsor-logo">
                                     <img src="/img/logos/brevan-howard.png" alt="Brevan Howard">
-                                    <p class="sponsor-logo__name">Brevan Howard</p>
                                 </div>
                                 <div class="sponsor-logo">
                                     <img src="/img/logos/sig.png" alt="SIG">
-                                    <p class="sponsor-logo__name">SIG</p>
                                 </div>
                             </div>
                         </div>
