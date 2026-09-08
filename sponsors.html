@@ -603,59 +603,138 @@
         }
         
 
-        /* --- Sponsors Section Styles --- */
-        .sponsors-section {
-            padding: 80px 20px;
+        /* --- Sponsors Page --- */
+        .sponsors-page {
+            --sponsor-navy: #0a2540;
+            --sponsor-gold: #b08d3c;
+            --sponsor-silver: #7a8088;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 72px 24px 100px;
+            font-family: "Times New Roman", Times, serif;
+            color: #111;
         }
-        .sponsors-section-title {
+        .sponsors-page__intro {
             text-align: center;
-            font-size: 50px;
+            margin-bottom: 64px;
+        }
+        .sponsors-page__title {
+            margin: 0 0 14px;
+            font-size: clamp(42px, 6vw, 64px);
             font-weight: 400;
-            margin: 0 0 10px;
-            font-family: 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
         }
-        .sponsors-section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 50px;
+        .sponsors-page__subtitle {
+            margin: 0 auto;
+            max-width: 560px;
+            font-size: 19px;
+            line-height: 1.55;
+            color: #444;
         }
-        .sponsor-group {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
+        .sponsor-tier {
+            margin: 0 0 56px;
         }
-        .sponsor-label {
-            font-style: italic;
-            font-size: 20px;
-            margin: 0 auto 15px;
-            text-align: left;
-            font-family: 'Times New Roman', serif;
+        .sponsor-tier:last-child {
+            margin-bottom: 0;
         }
-        .sponsor-logos {
+        .sponsor-tier__header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .sponsor-tier__label {
+            margin: 0;
+            flex: 0 0 auto;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .sponsor-tier__rule {
+            flex: 1 1 auto;
+            height: 1px;
+            border: 0;
+            margin: 0;
+            background: currentColor;
+            opacity: 0.35;
+        }
+        .sponsor-tier--gold .sponsor-tier__label,
+        .sponsor-tier--gold .sponsor-tier__rule {
+            color: var(--sponsor-gold);
+        }
+        .sponsor-tier--silver .sponsor-tier__label,
+        .sponsor-tier--silver .sponsor-tier__rule {
+            color: var(--sponsor-silver);
+        }
+        .sponsor-tier__logos {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 30px;
-            padding: 20px 0;
-        }
-        .sponsor-logo-box {
-            display: flex;
             justify-content: center;
-            align-items: center;
-            border-radius: 4px;
-            padding: 10px;
-            box-sizing: border-box;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            align-items: stretch;
+            gap: 24px;
         }
-        .sponsor-logo-box img {
-        max-height: 160px;
-        max-width: 240px;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-    }
+        .sponsor-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            min-width: min(100%, 280px);
+            padding: 36px 40px;
+            background: #f7f8fa;
+            border: 1px solid rgba(10, 37, 64, 0.08);
+            box-sizing: border-box;
+        }
+        .sponsor-tier--gold .sponsor-logo {
+            min-width: min(100%, 420px);
+            padding: 48px 56px;
+            background: linear-gradient(180deg, #fcfaf4 0%, #f7f4ea 100%);
+            border-color: rgba(176, 141, 60, 0.28);
+        }
+        .sponsor-logo img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .sponsor-tier--gold .sponsor-logo img {
+            max-height: 120px;
+            max-width: 320px;
+        }
+        .sponsor-tier--silver .sponsor-logo img {
+            max-height: 88px;
+            max-width: 220px;
+        }
+        .sponsor-logo__name {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sponsor-navy);
+            opacity: 0.75;
+        }
+        @media (max-width: 640px) {
+            .sponsors-page {
+                padding: 48px 18px 72px;
+            }
+            .sponsors-page__intro {
+                margin-bottom: 44px;
+            }
+            .sponsor-tier {
+                margin-bottom: 40px;
+            }
+            .sponsor-logo {
+                min-width: 100%;
+                padding: 28px 24px;
+            }
+            .sponsor-tier--gold .sponsor-logo {
+                padding: 36px 28px;
+            }
+        }
     </style>
 
     <style id="yuha-nav-consistency">
@@ -1686,29 +1765,39 @@
 
         <main id="page" class="container" role="main">
             <article class="sections" id="sections">
-                <!-- NEW SECTION: Sponsors -->
-                <section data-test="page-section-sponsors" class="page-section background-white sponsors-section">
-                    <div class="content-section">
-                        <h1 class="sponsors-section-title">Sponsors</h1>
-                        <p class="sponsors-section-subtitle">Thank you to our official sponsors for making YUHA's operations possible!</p>
+                <section data-test="page-section-sponsors" class="page-section background-white" aria-label="Sponsors">
+                    <div class="sponsors-page">
+                        <div class="sponsors-page__intro">
+                            <h1 class="sponsors-page__title">Sponsors</h1>
+                            <p class="sponsors-page__subtitle">Thank you to the firms that make YUHA’s programming and operations possible.</p>
+                        </div>
 
-                        <div class="sponsor-group">
-                            <p class="sponsor-label">Gold Sponsor:</p>
-                            <div class="sponsor-logos">
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/kalshi.png" alt="Kalshi Logo">
+                        <div class="sponsor-tier sponsor-tier--gold">
+                            <div class="sponsor-tier__header">
+                                <h2 class="sponsor-tier__label">Gold Sponsor</h2>
+                                <hr class="sponsor-tier__rule" />
+                            </div>
+                            <div class="sponsor-tier__logos">
+                                <div class="sponsor-logo">
+                                    <img src="/img/logos/kalshi.png" alt="Kalshi">
+                                    <p class="sponsor-logo__name">Kalshi</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="sponsor-group">
-                            <p class="sponsor-label">Silver Sponsors:</p>
-                            <div class="sponsor-logos">
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/brevan-howard.png" alt="Brevan Howard Logo">
+                        <div class="sponsor-tier sponsor-tier--silver">
+                            <div class="sponsor-tier__header">
+                                <h2 class="sponsor-tier__label">Silver Sponsors</h2>
+                                <hr class="sponsor-tier__rule" />
+                            </div>
+                            <div class="sponsor-tier__logos">
+                                <div class="sponsor-logo">
+                                    <img src="/img/logos/brevan-howard.png" alt="Brevan Howard">
+                                    <p class="sponsor-logo__name">Brevan Howard</p>
                                 </div>
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/sig.png" alt="SIG Logo">
+                                <div class="sponsor-logo">
+                                    <img src="/img/logos/sig.png" alt="SIG">
+                                    <p class="sponsor-logo__name">SIG</p>
                                 </div>
                             </div>
                         </div>
