@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="">
     <meta charset="utf-8"/>
-    <title>Menu 1 &mdash; YUHA</title>
+    <title>Investment Teams &mdash; YUHA</title>
     <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model"/>
     <link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/64b180920f7d8c0ee2a870a8/880b48d2-3ca5-44e4-8076-933c0063b213/favicon.ico?format=100w"/>
-    <link rel="canonical" href="https://www.yuhafinance.com/about"/>
+    <link rel="canonical" href="https://www.yuhafinance.com/investment-teams"/>
     <meta property="og:site_name" content="YUHA"/>
-    <meta property="og:title" content="Menu 1 &mdash; YUHA"/>
-    <meta property="og:url" content="https://www.yuhafinance.com/about"/>
+    <meta property="og:title" content="Investment Teams &mdash; YUHA"/>
+    <meta property="og:url" content="https://www.yuhafinance.com/investment-teams"/>
     <meta property="og:type" content="website"/>
-    <meta itemprop="name" content="Menu 1 — YUHA"/>
-    <meta itemprop="url" content="https://www.yuhafinance.com/about"/>
-    <meta name="twitter:title" content="Menu 1 — YUHA"/>
-    <meta name="twitter:url" content="https://www.yuhafinance.com/about"/>
+    <meta itemprop="name" content="Investment Teams — YUHA"/>
+    <meta itemprop="url" content="https://www.yuhafinance.com/investment-teams"/>
+    <meta name="twitter:title" content="Investment Teams — YUHA"/>
+    <meta name="twitter:url" content="https://www.yuhafinance.com/investment-teams"/>
     <meta name="twitter:card" content="summary"/>
     <meta name="description" content=""/>
     <link rel="preconnect" href="https://images.squarespace-cdn.com">
@@ -348,7 +348,7 @@
         "collection": {
             "title": "Apply",
             "id": "64b1a803798ab025572c819a",
-            "fullUrl": "/about",
+            "fullUrl": "/investment-teams",
             "type": 10,
             "permissionType": 1
         },
@@ -602,6 +602,128 @@
             }
         }
         
+        /* --- Investment Teams Section Styles --- */
+        .team-section-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 400;
+            margin: 0px 0 10px;
+            font-family: 'Times New Roman', serif;
+        }
+        .team-section-intro {
+            max-width: 800px;
+            margin: 0 auto 40px; /* Reduced margin-bottom */
+            padding: 0 20px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .team-grid-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-item-row {
+            position: relative;
+            margin-bottom: 10px; /* Removed space between rows for continuous flow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px; /* Reduced min-height slightly */
+        }
+
+        .team-title-box, .team-description-box {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .team-title-box {
+            background-color: var(--yuha-navy); /* Use consistent navy */
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 30; /* Ensures title box is always on top */
+            min-width: 300px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .team-description-box {
+            background-color: #f7f7f7;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+            z-index: 10;
+            max-width: 500px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            padding: 30px 40px; /* Base padding */
+        }
+
+        /* Specific Layout Adjustments for Overlapping Pattern */
+
+        .left-aligned {
+            justify-content: flex-start;
+        }
+        .left-aligned .team-title-box {
+            order: 1;
+            margin-right: -120px; /* Increased overlap for tighter flow */
+        }
+
+        .left-aligned .team-description-box {
+            order: 2;
+            margin-left: 0;
+            padding-left: 150px; /* Internal padding to protect text from title box */
+        }
+        
+        .right-aligned {
+            justify-content: flex-end;
+        }
+        .right-aligned .team-title-box {
+            order: 2;
+            margin-left: -120px; /* Increased overlap for tighter flow */
+        }
+
+        .right-aligned .team-description-box {
+            order: 1;
+            margin-right: 0;
+            text-align: right;
+            padding-right: 150px; /* Internal padding to protect text from title box */
+        }
+
+        /* Mobile Adjustments for Team Section (stacked, tighter overlap) */
+        @media (max-width: 768px) {
+            .team-item-row {
+                flex-direction: column;
+                margin-bottom: 0; /* Continuous flow */
+            }
+            .team-title-box, .team-description-box {
+                width: 100%;
+                min-width: 100%;
+                margin: 0 !important;
+                box-sizing: border-box;
+            }
+            .team-title-box {
+                order: 1 !important;
+                margin-bottom: -40px !important; /* Deeper overlap on mobile */
+                z-index: 30;
+                font-size: 24px;
+            }
+            .team-description-box {
+                order: 2 !important;
+                background-color: #fff; 
+                margin-top: 20px !important;
+                padding: 20px !important;
+                padding-top: 60px !important; /* Push text down past the title box overlap */
+                text-align: left !important;
+            }
+        }
 
         /* --- Sponsors Section Styles --- */
         .sponsors-section {
@@ -1042,8 +1164,8 @@
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
 
-                                        <div class="header-nav-item header-nav-item--collection header-nav-item--active">
-                                            <a href="/about" data-animation-role="header-element" aria-current="page">
+                                        <div class="header-nav-item header-nav-item--collection">
+                                            <a href="/about" data-animation-role="header-element">
                                                     About
                                                   </a>
                                         </div>
@@ -1053,8 +1175,8 @@
                                                     The Board
                                                   </a>
                                         </div>
-                                        <div class="header-nav-item header-nav-item--collection">
-                                            <a href="/investment-teams" data-animation-role="header-element">
+                                        <div class="header-nav-item header-nav-item--collection header-nav-item--active">
+                                            <a href="/investment-teams" data-animation-role="header-element" aria-current="page">
                                                     Investment Teams
                                                   </a>
                                         </div>
@@ -1144,8 +1266,8 @@
                                 <div class="header-nav-wrapper">
                                     <nav class="header-nav-list">
 
-                                        <div class="header-nav-item header-nav-item--collection header-nav-item--active">
-                                            <a href="/about" data-animation-role="header-element" aria-current="page">
+                                        <div class="header-nav-item header-nav-item--collection">
+                                            <a href="/about" data-animation-role="header-element">
                                                     About
                                                   </a>
                                         </div>
@@ -1155,8 +1277,8 @@
                                                     The Board
                                                   </a>
                                         </div>
-                                        <div class="header-nav-item header-nav-item--collection">
-                                            <a href="/investment-teams" data-animation-role="header-element">
+                                        <div class="header-nav-item header-nav-item--collection header-nav-item--active">
+                                            <a href="/investment-teams" data-animation-role="header-element" aria-current="page">
                                                     Investment Teams
                                                   </a>
                                         </div>
@@ -1493,8 +1615,8 @@
                                 <!-- Menu Navigation -->
                                 <div class="header-menu-nav-wrapper">
 
-                                    <div class="container header-menu-nav-item header-menu-nav-item--collection header-menu-nav-item--active">
-                                        <a href="/about" aria-current="page">
+                                    <div class="container header-menu-nav-item header-menu-nav-item--collection">
+                                        <a href="/about">
                                             <div class="header-menu-nav-item-content">
                                                               About
                                                             </div>
@@ -1508,8 +1630,8 @@
                                                             </div>
                                         </a>
                                     </div>
-                                    <div class="container header-menu-nav-item header-menu-nav-item--collection">
-                                        <a href="/investment-teams">
+                                    <div class="container header-menu-nav-item header-menu-nav-item--collection header-menu-nav-item--active">
+                                        <a href="/investment-teams" aria-current="page">
                                             <div class="header-menu-nav-item-content">
                                                               Investment Teams
                                                             </div>
@@ -1545,130 +1667,59 @@
 
         <main id="page" class="container" role="main">
             <article class="sections" id="sections">
-                <section data-test="page-section" class="page-section background-white">
+                <!-- NEW SECTION: Investment Teams -->
+                <section data-test="page-section-teams" class="page-section background-white">
                     <div class="content-section">
-                        <!-- Main Title Section -->
-                        <h1 class="section-title">About YUHA</h1>
-                        <h2 class="section-subtitle">Our Vision</h2>
-
-                        <!-- Main Body Text -->
-                        <div class="main-text">
+                        <h1 class="team-section-title">Investment Teams</h1>
+                        <div class="team-section-intro">
                             <p>
-                                The Yale Undergraduate Hedge Fund Association (YUHA) is Yale’s premier student-run organization dedicated to bridging the gap between classroom theory and real-world investing.</p>
+                                Investment teams form the core of YUHA’s operations. Each investment team is led by an experienced group head who leads discussions about financial strategy, provides technical training, and facilitates weekly stock pitches to other team members.
+                            </p>
                             <p>
-                                Founded to foster an intellectually rigorous and inclusive investing community, YUHA brings together undergraduates passionate about hedge funds, public markets, and alternative investments. Through a structured curriculum, members explore portfolio construction, behavioral finance, and risk management before applying these concepts in hands-on simulations and sector-specific teams.</p>
-                            <p>
-                                YUHA hosts a robust speaker series featuring leading investors, fund managers, and Yale alumni, and partners on live projects with hedge funds managing over $50 billion AUM. Members also participate in national stock-pitch competitions, internal portfolio challenges, and collaborative research initiatives that mirror professional investment workflows.</p>
+                                For the 2025-2026 academic year, YUHA has four investment teams.
+                            </p>
                         </div>
 
-                        <!-- Image and Overlapping Box Section -->
-                        <div class="image-text-container">
-                            <img src="/img/logos/sterling.png"
-                                alt="Sterling Library"
-                                class="main-image">
+                        <div class="team-grid-container">
 
-                            <div class="overlapping-box">
-                                <p class="overlapping-text">
-                                    More than just a finance club, YUHA serves as a launchpad for students to build market intuition, technical skill, and a lifelong network of peers and mentors who are shaping the future of global investing.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-                
-                <!-- NEW SECTION: Sponsors -->
-                <section data-test="page-section-sponsors" class="page-section background-white sponsors-section">
-                    <div class="content-section">
-                        <h1 class="sponsors-section-title">Sponsors</h1>
-                        <p class="sponsors-section-subtitle">Thank you to our official sponsors for making YUHA's operations possible!</p>
-
-                        <div class="sponsor-group">
-                            <p class="sponsor-label">Gold Sponsor:</p>
-                            <div class="sponsor-logos">
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/kalshi.png" alt="Kalshi Logo">
+                            <div class="team-item-row left-aligned">
+                                <div class="team-title-box">
+                                    GLOBAL MACRO
+                                </div>
+                                <div class="team-description-box">
+                                    <p>The Global Macro team studies how nations move capital, set policy, and manage risk. Members analyze inflation cycles, interest rate shifts, and geopolitical dynamics to form high-conviction views on global market trends.</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="sponsor-group">
-                            <p class="sponsor-label">Silver Sponsors:</p>
-                            <div class="sponsor-logos">
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/brevan-howard.png" alt="Brevan Howard Logo">
+                            <div class="team-item-row right-aligned">
+                                <div class="team-description-box">
+                                    <p>The Event-Driven team focuses on moments of corporate change such as mergers, spin-offs, and restructurings. Members learn to anticipate catalysts and uncover value where timing and strategy converge.</p>
                                 </div>
-                                <div class="sponsor-logo-box">
-                                    <img src="/img/logos/sig.png" alt="SIG Logo">
+                                <div class="team-title-box">
+                                    EVENT-DRIVEN
+                                </div>
+                            </div>
+
+                            <div class="team-item-row left-aligned">
+                                <div class="team-title-box">
+                                    LONG/SHORT
+                                </div>
+                                <div class="team-description-box">
+                                    <p>The Long/Short team builds differentiated perspectives on companies through rigorous fundamental research and valuation analysis. Members learn to identify long-term winners and short opportunities in competitive markets.</p>
+                                </div>
+                            </div>
+
+                            <div class="team-item-row right-aligned">
+                                <div class="team-description-box">
+                                    <p>The Distressed Debt team explores situations where volatility creates value. Members study balance sheets, capital structures, and recovery scenarios to identify mispriced credit and turnaround opportunities.</p>
+                                </div>
+                                <div class="team-title-box">
+                                    DISTRESSED DEBT
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
-
-            
-                <section aria-label="Our Placements" class="placements-section" id="placements">
-                    <div class="container">
-                    <h2>See where our members have worked:</h2>
-                    <p class="subtitle"></p>
-                    <div aria-label="Partner and employer logos" class="placements-marquee" role="region">
-                    <div class="marquee-track">
-                    <img alt="Goldman Sachs" src="/img/logos/goldman-sachs.png"/>
-                    <img alt="EY-Parthenon" src="/img/logos/ey-parthenon.png"/>
-                    <img alt="Gordon Dyal &amp; Co." src="/img/logos/gordon-dyal.png"/>
-                    <img alt="Morgan Stanley" src="/img/logos/morgan-stanley.png"/>
-                    <img alt="JPMorgan" src="/img/logos/jpmorgan.png"/>
-                    <img alt="Bracebridge" src="/img/logos/bracebridge.png"/>
-                    <img alt="Blackstone" src="/img/logos/blackstone.png"/>
-                    <img alt="BAM" src="/img/logos/bam.png"/>
-                    <img alt="Centerview Partners" src="/img/logos/centerview-partners.png"/>
-                    <img alt="Bain &amp; Company" src="/img/logos/bain.png"/>
-                    <img alt="McKinsey &amp; Company" src="/img/logos/mckinsey.png"/>
-                    <img alt="Canyon Partners" src="/img/logos/canyon-partners.png"/>
-                    <img alt="Verdad Advisors" src="/img/logos/verdad-advisors.png"/>
-                    <img alt="Greenhill" src="/img/logos/greenhill.png"/>
-                    <img alt="The Carlyle Group" src="/img/logos/carlyle.png"/>
-                    <img alt="Houlihan Lokey" src="/img/logos/houlihan-lokey.png"/>
-                    <img alt="Barclays" src="/img/logos/barclays.png"/>
-                    <img alt="NHL" src="/img/logos/nhl.png"/>
-                    <img alt="Bank of America" src="/img/logos/bofa.png"/>
-                    <img alt="SkyBridge Capital" src="/img/logos/skybridge-capital.png"/>
-                    <img alt="Point72" src="/img/logos/point72.png"/>
-                    <img alt="Abdiel" src="/img/logos/abdiel.png"/>
-                    <img alt="Samlyn Capital" src="/img/logos/samlyn-capital.png"/>
-                    <img alt="Roark Capital" src="/img/logos/roark-capital.png"/>
-                    <img alt="D.E. Shaw" src="/img/logos/deshaw.png"/>
-                    <img alt="Goldman Sachs" src="/img/logos/goldman-sachs.png"/>
-                    <img alt="EY-Parthenon" src="/img/logos/ey-parthenon.png"/>
-                    <img alt="Gordon Dyal &amp; Co." src="/img/logos/gordon-dyal.png"/>
-                    <img alt="Morgan Stanley" src="/img/logos/morgan-stanley.png"/>
-                    <img alt="JPMorgan" src="/img/logos/jpmorgan.png"/>
-                    <img alt="Bracebridge" src="/img/logos/bracebridge.png"/>
-                    <img alt="Blackstone" src="/img/logos/blackstone.png"/>
-                    <img alt="BAM" src="/img/logos/bam.png"/>
-                    <img alt="Centerview Partners" src="/img/logos/centerview-partners.png"/>
-                    <img alt="Bain &amp; Company" src="/img/logos/bain.png"/>
-                    <img alt="McKinsey &amp; Company" src="/img/logos/mckinsey.png"/>
-                    <img alt="Canyon Partners" src="/img/logos/canyon-partners.png"/>
-                    <img alt="Verdad Advisors" src="/img/logos/verdad-advisors.png"/>
-                    <img alt="Greenhill" src="/img/logos/greenhill.png"/>
-                    <img alt="The Carlyle Group" src="/img/logos/carlyle.png"/>
-                    <img alt="Houlihan Lokey" src="/img/logos/houlihan-lokey.png"/>
-                    <img alt="Barclays" src="/img/logos/barclays.png"/>
-                    <img alt="NHL" src="/img/logos/nhl.png"/>
-                    <img alt="Bank of America" src="/img/logos/bofa.png"/>
-                    <img alt="SkyBridge Capital" src="/img/logos/skybridge-capital.png"/>
-                    <img alt="Point72" src="/img/logos/point72.png"/>
-                    <img alt="Abdiel" src="/img/logos/abdiel.png"/>
-                    <img alt="Samlyn Capital" src="/img/logos/samlyn-capital.png"/>
-                    <img alt="Roark Capital" src="/img/logos/roark-capital.png"/>
-                    <img alt="D.E. Shaw" src="/img/logos/deshaw.png"/>
-                    </div>
-                    </div>
-                    </div>
-                    </section>
-
             </article>
         </main>
 
@@ -1687,37 +1738,5 @@
         </symbol>
     </svg>
 
-        <style>
-        .placements-section { padding: 80px 20px; background-color: #0a2540; color: #ffffff; }
-        .placements-section .container { max-width: 1200px; margin: 0 auto; text-align: center; }
-        .placements-section h2 { font-size: 2.3rem; margin-bottom: 12px; color: #ffffff; }
-        .placements-section .subtitle { font-size: 1.15rem; margin-bottom: 35px; color: #c8d4e3; }
-        
-        .placements-marquee { overflow: hidden; background: #ffffff; padding: 28px 0; border-radius: 12px; margin-bottom: 54px;
-          box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-        .marquee-track { display: inline-flex; align-items: center; gap: 80px; animation: placements-scroll 60s linear infinite;
-          will-change: transform; }
-        .placements-marquee:hover .marquee-track { animation-play-state: paused; }
-        .marquee-track img { height: 78px; width: auto; object-fit: contain; opacity: .95; transition: transform .25s ease, opacity .25s ease; }
-        .marquee-track img:hover { transform: translateY(-3px); opacity: 1; }
-        
-        @keyframes placements-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        
-        .placements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 36px; justify-items: center; }
-        .placements-grid .grid-logo { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 140px;
-          padding: 14px; background: rgba(255,255,255,0.06); border-radius: 12px; transition: background .2s ease, transform .2s ease; }
-        .placements-grid .grid-logo:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-        .placements-grid img { max-height: 100px; max-width: 240px; width: auto; height: auto; object-fit: contain; display: block; }
-        
-        @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
-        
-        @media (max-width: 640px) {
-          .placements-section h2 { font-size: 1.9rem; }
-          .marquee-track { gap: 56px; }
-          .marquee-track img { height: 64px; }
-          .placements-grid .grid-logo { height: 110px; }
-          .placements-grid img { max-height: 80px; max-width: 200px; }
-        }
-        </style>
 </body>
 </html>
