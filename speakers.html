@@ -58,40 +58,91 @@
     .title h1{font-size: clamp(40px, 5vw, 72px); margin:0 0 20px; font-weight:400; font-family:"Times New Roman", Times, serif; line-height:1.1;}
     .title p{margin:0; color: var(--muted);}
 
-    /* Speakers grid: two per row */
+    /* Horizontal carousel: one band, whole cards only */
+    .speakers-carousel{
+      --gap: 20px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      align-items: center;
+      gap: 12px;
+    }
+    .speakers-carousel__btn{
+      width: 44px; height: 44px; padding: 0;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #23344E;
+      display: grid; place-items: center;
+      cursor: pointer;
+    }
+    .speakers-carousel__btn svg{ width: 18px; height: 18px; display: block; }
+    .speakers-carousel__btn--next svg{ transform: scaleX(-1); }
+    .speakers-carousel__btn:hover:not(:disabled){
+      background: #23344E; color: #fff; border-color: #23344E;
+    }
+    .speakers-carousel__btn:focus-visible{
+      outline: 2px solid #23344E; outline-offset: 3px;
+    }
+    .speakers-carousel__btn:disabled{
+      opacity: .35; cursor: default;
+    }
     .speakers-grid{
-      display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px;
+      --visible: 3;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      gap: var(--gap);
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 4px 2px 8px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
     }
-    @media (max-width: 900px){ .speakers-grid{gap:32px} }
-    @media (max-width: 760px){ .speakers-grid{ grid-template-columns: 1fr; } }
+    .speakers-grid::-webkit-scrollbar{ display: none; }
 
-    /* Speaker card (centered vertical stack) */
+    /* Equal-width cards so every speaker occupies the same band */
     .speaker-card{
-      text-align:center; padding: 28px 16px;
+      flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
+      width: calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 28px 16px;
       border: 1px solid var(--border); border-radius: 18px; background:#fff;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: box-shadow .2s ease;
     }
-    .speaker-card:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .speaker-card:hover{ box-shadow: 0 8px 24px rgba(0,0,0,.06); }
 
-    /* Big circular avatar (>= 3x previous 140px => 420px desktop) */
     .avatar{
-      width: 420px; height: 420px; border-radius: 50%; overflow: hidden;
+      width: min(220px, 74%);
+      aspect-ratio: 1;
+      height: auto;
+      border-radius: 50%; overflow: hidden;
       border: 3px solid var(--border); background:#f5f5f5; margin: 0 auto 18px;
+      flex: 0 0 auto;
     }
-    .avatar img{ width:100%; height:100%; object-fit: cover; }
+    .avatar img{ width:100%; height:100%; object-fit: cover; object-position: center center; }
 
-    .speaker-name{ font-weight:800; font-size: clamp(22px, 2.6vw, 30px); margin: 10px 0 10px; }
-    .speaker-desc{ color: var(--muted); font-size: clamp(16px, 1.6vw, 18px); margin: 0 auto; max-width: 60ch; }
+    .speaker-name{ font-weight:800; font-size: clamp(20px, 2vw, 26px); margin: 10px 0 10px; }
+    .speaker-desc{ color: var(--muted); font-size: clamp(15px, 1.4vw, 17px); margin: 0 auto; max-width: 28ch; }
 
-    /* Responsive avatar sizes */
-    @media (max-width: 1200px){
-      .avatar{ width: 360px; height: 360px; }
-    }
     @media (max-width: 900px){
-      .avatar{ width: 300px; height: 300px; }
+      .speakers-grid{ --visible: 2; }
     }
     @media (max-width: 640px){
-      .avatar{ width: 220px; height: 220px; }
+      .speakers-carousel{
+        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        gap: 8px;
+      }
+      .speakers-carousel__btn{ width: 36px; height: 36px; }
+      .speakers-grid{ --visible: 1; --gap: 12px; }
+      .speaker-card{ padding: 22px 14px; }
     }
   </style>
 
@@ -1643,7 +1694,13 @@
             <p>Highlights from our guest talks and industry conversations</p>
           </section>
       
-          <section class="speakers-grid" aria-label="Speakers list">
+          <div class="speakers-carousel" aria-roledescription="carousel" aria-label="Featured speakers">
+            <button type="button" class="speakers-carousel__btn speakers-carousel__btn--prev" aria-label="Previous speakers" disabled>
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          <section class="speakers-grid" id="speakers-track" aria-label="Speakers list" tabindex="0">
             <!-- 1 -->
             <article class="speaker-card">
               <div class="avatar">
@@ -1724,8 +1781,170 @@
               <h3 class="speaker-name">Chuck Myers</h3>
               <p class="speaker-desc">CEO of Myers Family Office and Ex-Portfolio Manager at Fidelity Investments</p>
             </article>
+
+            <!-- 10 -->
+            <article class="speaker-card">
+              <div class="avatar">
+                <img src="/img/people/bryan-whalen.jpg" alt="Portrait of Bryan Whalen">
+              </div>
+              <h3 class="speaker-name">Bryan Whalen</h3>
+              <p class="speaker-desc">CIO of Fixed Income at TCW &nbsp;|&nbsp; Yale ’97</p>
+            </article>
+
+            <!-- 11 -->
+            <article class="speaker-card">
+              <div class="avatar">
+                <img src="/img/people/yiyuan-fang.jpg" alt="Portrait of Yiyuan Fang">
+              </div>
+              <h3 class="speaker-name">Yiyuan Fang</h3>
+              <p class="speaker-desc">Analyst at Vitol &nbsp;|&nbsp; Yale ’21</p>
+            </article>
           </section>
+            <button type="button" class="speakers-carousel__btn speakers-carousel__btn--next" aria-label="Next speakers">
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </main>
+
+        <script>
+          (function () {
+            var root = document.querySelector(".speakers-carousel");
+            if (!root) return;
+            var track = root.querySelector(".speakers-grid");
+            var prev = root.querySelector(".speakers-carousel__btn--prev");
+            var next = root.querySelector(".speakers-carousel__btn--next");
+            var index = 0;
+            var maxIndex = 0;
+            var direction = 1;
+            var animId = 0;
+            var animating = false;
+            var autoTimer = null;
+            var paused = false;
+            var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            var SLIDE_MS = 1800;
+            var AUTO_MS = 5200;
+
+            function metrics() {
+              var card = track.querySelector(".speaker-card");
+              var count = track.querySelectorAll(".speaker-card").length;
+              var styles = getComputedStyle(track);
+              var visible = parseInt(styles.getPropertyValue("--visible"), 10) || 1;
+              var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+              var step = card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+              maxIndex = Math.max(0, count - visible);
+              return step;
+            }
+
+            function updateButtons() {
+              prev.disabled = index <= 0;
+              next.disabled = index >= maxIndex;
+            }
+
+            function easeInOut(t) {
+              return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            }
+
+            function animateScroll(left, duration) {
+              if (animId) cancelAnimationFrame(animId);
+              var start = track.scrollLeft;
+              var change = left - start;
+              if (!duration || Math.abs(change) < 1 || reduceMotion) {
+                animating = false;
+                track.style.scrollSnapType = "";
+                track.scrollLeft = left;
+                updateButtons();
+                return;
+              }
+              var t0 = null;
+              animating = true;
+              track.style.scrollSnapType = "none";
+              function frame(now) {
+                if (t0 === null) t0 = now;
+                var p = Math.min(1, (now - t0) / duration);
+                track.scrollLeft = start + change * easeInOut(p);
+                if (p < 1) {
+                  animId = requestAnimationFrame(frame);
+                } else {
+                  animId = 0;
+                  animating = false;
+                  track.style.scrollSnapType = "";
+                  track.scrollLeft = left;
+                  updateButtons();
+                }
+              }
+              animId = requestAnimationFrame(frame);
+            }
+
+            function goTo(nextIndex, duration) {
+              var step = metrics();
+              index = Math.min(maxIndex, Math.max(0, nextIndex));
+              animateScroll(Math.round(index * step), duration === 0 ? 0 : (duration || SLIDE_MS));
+              updateButtons();
+            }
+
+            function queueAuto() {
+              if (autoTimer) clearTimeout(autoTimer);
+              if (reduceMotion) return;
+              autoTimer = setTimeout(function () {
+                if (!paused) {
+                  var next = index + direction;
+                  if (next > maxIndex || next < 0) {
+                    direction *= -1;
+                    next = index + direction;
+                  }
+                  if (next !== index) goTo(next);
+                }
+                queueAuto();
+              }, AUTO_MS);
+            }
+
+            prev.addEventListener("click", function () {
+              direction = -1;
+              goTo(index - 1);
+              queueAuto();
+            });
+            next.addEventListener("click", function () {
+              direction = 1;
+              goTo(index + 1);
+              queueAuto();
+            });
+
+            root.addEventListener("keydown", function (event) {
+              if (event.key === "ArrowRight") {
+                event.preventDefault();
+                direction = 1;
+                goTo(index + 1);
+                queueAuto();
+              } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                direction = -1;
+                goTo(index - 1);
+                queueAuto();
+              }
+            });
+
+            root.addEventListener("mouseenter", function () { paused = true; });
+            root.addEventListener("mouseleave", function () { paused = false; });
+            root.addEventListener("focusin", function () { paused = true; });
+            root.addEventListener("focusout", function (event) {
+              if (!root.contains(event.relatedTarget)) paused = false;
+            });
+
+            track.addEventListener("scrollend", function () {
+              if (animating) return;
+              var step = metrics();
+              if (!step) return;
+              index = Math.min(maxIndex, Math.max(0, Math.round(track.scrollLeft / step)));
+              updateButtons();
+            });
+
+            window.addEventListener("resize", function () { goTo(index, 0); });
+            goTo(0, 0);
+            queueAuto();
+          })();
+        </script>
 
         <footer class="sections" id="footer-sections" data-footer-sections>
             <div class="yuha-site-footer" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background-color:#23344E;color:#ffffff;padding:30px 40px;font-family:Georgia,'Times New Roman',Times,serif;font-size:20px;box-sizing:border-box;width:100%;">
