@@ -1687,6 +1687,15 @@
                                     display: block;
                                 }
 
+                                /* Center a lone last card in the two-column leadership grid. */
+                                @media (min-width: 576px) {
+                                    .user-items-list-item-container[data-section-id="64b1c886e171be7035960af9"] > .list-item:last-child:nth-child(odd) {
+                                        grid-column: 1 / -1;
+                                        justify-self: center;
+                                        width: calc((100% - 100px) / 2);
+                                    }
+                                }
+
                                 @supports (--test-custom-property: true) {
                                     .user-items-list-item-container[data-section-id="64b1c886e171be7035960af9"] {
                                         --title-font-size-value: 1.2;
