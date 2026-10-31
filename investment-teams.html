@@ -649,11 +649,19 @@
             color: #fff;
             font-size: 28px;
             font-weight: 700;
+            line-height: 1.15;
             text-transform: uppercase;
             z-index: 30; /* Ensures title box is always on top */
             min-width: 300px;
             text-align: center;
             border-radius: 4px;
+        }
+        .team-title-box--wide {
+            font-size: 25px;
+        }
+        .team-title-box--wide span {
+            display: block;
+            white-space: nowrap;
         }
 
         .team-description-box {
@@ -718,6 +726,11 @@
                 margin-bottom: -40px !important; /* Deeper overlap on mobile */
                 z-index: 30;
                 font-size: 24px;
+            }
+            .team-title-box.team-title-box--wide {
+                font-size: 18px;
+                padding-left: 12px;
+                padding-right: 12px;
             }
             .team-description-box {
                 order: 2 !important;
@@ -1818,7 +1831,7 @@
                         <h1 class="team-section-title">Investment Teams</h1>
                         <div class="team-section-intro">
                             <p>
-                                Investment teams form the core of YUHA’s operations. Each investment team is led by an experienced group head who leads discussions about financial strategy, provides technical training, and facilitates weekly stock pitches to other team members.
+                                YUHA members choose a specific investment team to join, where they work together to build a new investment thesis and present it in a pitch competition at the end of the semester.
                             </p>
                             <p>
                                 For the 2026-2027 academic year, YUHA has four investment teams.
@@ -1856,10 +1869,11 @@
 
                             <div class="team-item-row right-aligned">
                                 <div class="team-description-box">
-                                    <p>The Distressed Debt team explores situations where volatility creates value. Members study balance sheets, capital structures, and recovery scenarios to identify mispriced credit and turnaround opportunities.</p>
+                                    <p>The Prediction Markets &amp; Quant Strategies team treats prices as probabilities and models as a way to find edge. Members study event contracts, statistical signals, and systematic frameworks to build disciplined views where data and market structure meet.</p>
                                 </div>
-                                <div class="team-title-box">
-                                    DISTRESSED DEBT
+                                <div class="team-title-box team-title-box--wide">
+                                    <span>Prediction Markets</span>
+                                    <span>&amp; Quant Strategies</span>
                                 </div>
                             </div>
                         </div>
