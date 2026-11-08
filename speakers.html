@@ -1830,6 +1830,25 @@
             var next = root.querySelector(".speakers-carousel__btn--next");
             var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+            function shuffleSpeakers() {
+              var cards = Array.prototype.slice.call(track.querySelectorAll(".speaker-card"));
+              for (var i = cards.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var swap = cards[i];
+                cards[i] = cards[j];
+                cards[j] = swap;
+              }
+              cards.forEach(function (card) { track.appendChild(card); });
+              track.scrollLeft = 0;
+            }
+
+            shuffleSpeakers();
+            window.addEventListener("pageshow", function (event) {
+              if (!event.persisted) return;
+              shuffleSpeakers();
+              updateButtons();
+            });
+
             function stepSize() {
               var card = track.querySelector(".speaker-card");
               if (!card) return 0;
