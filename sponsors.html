@@ -20,7 +20,7 @@
     <meta name="twitter:title" content="Sponsors — YUHA"/>
     <meta name="twitter:url" content="https://www.yuhafinance.com/sponsors"/>
     <meta name="twitter:card" content="summary"/>
-    <meta name="description" content=""/>
+    <meta name="description" content="Sponsorship packages for firms partnering with the Yale Undergraduate Hedge Fund Association, and the sponsors who support YUHA."/>
     <link rel="preconnect" href="https://images.squarespace-cdn.com">
     <script type="text/javascript" src="//use.typekit.net/ik/fGID1CowYRlpNG4RUigQKZq7wsYRL4DY40tkdmMqtTXfe7GgfFHN4UJLFRbh52jhWDjXjRItw2qkwejaZ2yRwem8wcItFDgy5gGMJygcScmTZhyXOWs8pYblSY4zJygyZeNKZPuRjWFCdhtlSY4zH6qJ1cqbMg6BJMJ7fbK--sMMeMS5MKG4f4NTIMMj2kMfH6qJchqbMg6sJMJ7fbKKbyMgeMb6MKG4fHsfIMIjgkMfH6qJGXJbMs65JMJ7fbK8byMgegI6MTMgECk9lbj.js"></script>
     <script type="text/javascript">
@@ -662,9 +662,10 @@
         }
         .sponsors-page {
             --sponsor-gold: #b08d3c;
+            --sponsor-navy: #0a2540;
             --sponsor-silver: #7a8088;
             width: 100%;
-            max-width: 880px;
+            max-width: 1080px;
             margin: 0 auto;
             padding: 40px 24px 32px;
             box-sizing: border-box;
@@ -693,6 +694,15 @@
             color: #444;
             text-align: center !important;
             white-space: nowrap !important;
+        }
+        .sponsors-page__jump {
+            margin: 14px 0 0;
+            text-align: center;
+            font-size: 16px;
+        }
+        .sponsors-page__jump a {
+            color: var(--sponsor-navy);
+            text-underline-offset: 3px;
         }
         .sponsors-page__tiers {
             display: flex;
@@ -798,12 +808,164 @@
             max-width: 90%;
             max-height: 58px;
         }
+        /* Prospective sponsors */
+        .prospectus {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(10, 37, 64, 0.12);
+            scroll-margin-top: 108px;
+        }
+        .prospectus__kicker {
+            margin: 0 0 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sponsor-gold);
+        }
+        .prospectus__title {
+            margin: 0 0 14px;
+            text-align: center;
+            font-size: clamp(34px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.1;
+            color: #111;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .prospectus__lead {
+            max-width: 680px;
+            margin: 0 auto 22px;
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.55;
+            color: #333;
+        }
+        .prospectus__actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px 22px;
+            margin-bottom: 28px;
+        }
+        .prospectus__btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--sponsor-navy);
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--sponsor-navy);
+        }
+        .prospectus__btn:hover {
+            background: #16365c;
+        }
+        .prospectus__mail {
+            color: var(--sponsor-navy);
+            font-size: 16px;
+            text-underline-offset: 3px;
+        }
+        .prospectus__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            align-items: stretch;
+        }
+        .package {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            border: 1px solid rgba(10, 37, 64, 0.12);
+            background: #fff;
+        }
+        .package__head {
+            padding: 22px 18px 18px;
+            text-align: center;
+            border-bottom: 1px solid rgba(10, 37, 64, 0.08);
+        }
+        .package--platinum .package__head {
+            background: var(--sponsor-navy);
+            color: #fff;
+            border-bottom: 0;
+        }
+        .package--gold .package__head {
+            background: #f8f5eb;
+            color: #8a6b24;
+        }
+        .package--silver .package__head {
+            background: #f4f5f6;
+            color: #5c6268;
+        }
+        .package__name {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+        .package__price {
+            margin: 8px 0 0;
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 1;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .package__body {
+            padding: 4px 18px 8px;
+        }
+        .package__group {
+            margin: 0;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(10, 37, 64, 0.08);
+        }
+        .package__group:last-child {
+            border-bottom: 0;
+        }
+        .package__label {
+            margin: 0 0 6px;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #7a6850;
+        }
+        .package__text {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.45;
+            color: #222;
+        }
+        .prospectus__note {
+            max-width: 680px;
+            margin: 22px auto 0;
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #444;
+        }
+        @media (max-width: 860px) {
+            .prospectus__grid {
+                grid-template-columns: 1fr;
+            }
+            .prospectus {
+                margin-top: 48px;
+                padding-top: 36px;
+            }
+        }
         @media (max-width: 640px) {
             .sponsors-page {
                 padding: 28px 18px 24px;
             }
             .sponsors-page__subtitle {
                 font-size: 12px;
+                white-space: normal !important;
+                width: auto;
+                max-width: 34em !important;
+            }
+            .sponsors-page__jump {
+                font-size: 15px;
             }
             .sponsor-tier--silver .sponsor-tier__logos {
                 grid-template-columns: 1fr;
@@ -1867,6 +2029,7 @@
                         <div class="sponsors-page__intro">
                             <h1 class="sponsors-page__title">Sponsors</h1>
                             <p class="sponsors-page__subtitle" style="white-space:nowrap;text-align:center;width:max-content;margin-left:auto;margin-right:auto;">Thank you to the firms that make YUHA’s programming and operations possible.</p>
+                            <p class="sponsors-page__jump"><a href="#sponsorship-prospectus">Sponsorship details for prospective firms</a></p>
                         </div>
 
                         <div class="sponsors-page__tiers">
@@ -1897,6 +2060,90 @@
                                 </div>
                             </div>
                         </div>
+
+                        <section class="prospectus" id="sponsorship-prospectus" aria-labelledby="prospectus-title">
+                            <p class="prospectus__kicker">For prospective sponsors</p>
+                            <h2 class="prospectus__title" id="prospectus-title">Sponsorship prospectus</h2>
+                            <p class="prospectus__lead">YUHA partners with firms that want to mentor students preparing for careers in hedge funds and asset management. Sponsorship supports the student investment fund, the speaker series, industry treks, and research engagements shaped around your firm’s priorities.</p>
+                            <div class="prospectus__actions">
+                                <a class="prospectus__btn" href="/docs/yuha-2026-sponsorship-prospectus.pdf" target="_blank" rel="noopener">View the full prospectus</a>
+                                <a class="prospectus__mail" href="mailto:christian.ruizangulo@yale.edu">christian.ruizangulo@yale.edu</a>
+                            </div>
+
+                            <div class="prospectus__grid">
+                                <article class="package package--platinum">
+                                    <header class="package__head">
+                                        <h3 class="package__name">Platinum</h3>
+                                        <p class="package__price">$20,000</p>
+                                    </header>
+                                    <div class="package__body">
+                                        <div class="package__group">
+                                            <p class="package__label">Research</p>
+                                            <p class="package__text">Three semesters of sponsored research. Each engagement is an investment thesis with a buy, sell, or hold recommendation, or a custom project such as due diligence, AI analysis, or operational research. Includes priority scheduling and a dedicated project lead.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Student fund</p>
+                                            <p class="package__text">A contribution to Yale’s only student-managed portfolio, with a quarterly letter on investments and fund progress.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recruiting</p>
+                                            <p class="package__text">Unlimited emails to the membership, the full resume book, and two hour-long conversations with members each year.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recognition</p>
+                                            <p class="package__text">Platinum recognition on this site, two LinkedIn features a year, and your logo on all YUHA merchandise.</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="package package--gold">
+                                    <header class="package__head">
+                                        <h3 class="package__name">Gold</h3>
+                                        <p class="package__price">$15,000</p>
+                                    </header>
+                                    <div class="package__body">
+                                        <div class="package__group">
+                                            <p class="package__label">Research</p>
+                                            <p class="package__text">Two semesters of sponsored research. Each engagement is an investment thesis on any asset class or security, or a custom project such as due diligence, AI analysis, or operational research.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Programming</p>
+                                            <p class="package__text">A full semester of the speaker series, networking events, and industry treks, plus an annual report on the student-managed fund.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recruiting</p>
+                                            <p class="package__text">Three emails to the membership, the full resume book, and one hour-long conversation with members each year.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recognition</p>
+                                            <p class="package__text">Gold recognition on this site and one LinkedIn feature a year.</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="package package--silver">
+                                    <header class="package__head">
+                                        <h3 class="package__name">Silver</h3>
+                                        <p class="package__price">$5,000</p>
+                                    </header>
+                                    <div class="package__body">
+                                        <div class="package__group">
+                                            <p class="package__label">Research</p>
+                                            <p class="package__text">One semester-long project on an investment theme, sector, or topic you choose, delivered as a formal research deck. Scope can be investment analysis, market research, or a custom project.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recruiting</p>
+                                            <p class="package__text">One email to the membership to share recruiting timelines and events.</p>
+                                        </div>
+                                        <div class="package__group">
+                                            <p class="package__label">Recognition</p>
+                                            <p class="package__text">Silver recognition on this site.</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <p class="prospectus__note">Packages can be adjusted to a firm’s interests. The letter from the executive board and the full comparison are in the prospectus.</p>
+                        </section>
                     </div>
                 </section>
             </article>
