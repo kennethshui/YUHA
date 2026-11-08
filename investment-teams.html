@@ -709,6 +709,58 @@
             padding-right: 150px; /* Internal padding to protect text from title box */
         }
 
+        /* Leader portraits sit where the team description used to be */
+        .team-description-box.team-leaders {
+            box-sizing: border-box;
+            width: 690px;
+            max-width: 690px;
+            flex: 1 1 420px;
+            min-width: 0;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 22px;
+            text-align: center;
+        }
+        .team-leader {
+            margin: 0;
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .team-leader img {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            object-position: center 22%;
+            display: block;
+            border-radius: 2px;
+        }
+        .team-leader figcaption {
+            margin-top: 10px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            line-height: 1.2;
+            color: #23344E;
+        }
+        .team-leaders--single .team-leader {
+            flex: 0 1 240px;
+            width: 240px;
+            max-width: 100%;
+        }
+        .team-leaders--single .team-leader img {
+            aspect-ratio: 1 / 1;
+            object-position: center center;
+        }
+        .left-aligned .team-leaders--single {
+            justify-content: flex-start;
+        }
+        .right-aligned .team-leaders--single {
+            justify-content: flex-end;
+        }
+        .team-leaders--square .team-leader img {
+            aspect-ratio: 1 / 1;
+            object-position: center center;
+        }
+
         /* Mobile Adjustments for Team Section (stacked, tighter overlap) */
         @media (max-width: 768px) {
             .team-item-row {
@@ -739,6 +791,13 @@
                 padding: 20px !important;
                 padding-top: 60px !important; /* Push text down past the title box overlap */
                 text-align: left !important;
+            }
+            .team-description-box.team-leaders {
+                text-align: center !important;
+                gap: 14px;
+            }
+            .team-description-box.team-leaders.team-leaders--single {
+                justify-content: center !important;
             }
         }
 
@@ -1844,14 +1903,28 @@
                                 <div class="team-title-box">
                                     GLOBAL MACRO
                                 </div>
-                                <div class="team-description-box">
-                                    <p>The Global Macro team studies how nations move capital, set policy, and manage risk. Members analyze inflation cycles, interest rate shifts, and geopolitical dynamics to form high-conviction views on global market trends.</p>
+                                <div class="team-description-box team-leaders">
+                                    <figure class="team-leader">
+                                        <img src="/img/people/christian-ruiz.jpg" alt="Portrait of Christian Ruiz">
+                                        <figcaption>Christian Ruiz</figcaption>
+                                    </figure>
+                                    <figure class="team-leader">
+                                        <img src="/img/people/parker-koch.jpg" alt="Portrait of Parker Koch">
+                                        <figcaption>Parker Koch</figcaption>
+                                    </figure>
                                 </div>
                             </div>
 
                             <div class="team-item-row right-aligned">
-                                <div class="team-description-box">
-                                    <p>The Event-Driven team focuses on moments of corporate change such as mergers, spin-offs, and restructurings. Members learn to anticipate catalysts and uncover value where timing and strategy converge.</p>
+                                <div class="team-description-box team-leaders team-leaders--square">
+                                    <figure class="team-leader">
+                                        <img src="/img/people/shogo-oconnor.jpg" alt="Portrait of Shogo O'Connor">
+                                        <figcaption>Shogo O'Connor</figcaption>
+                                    </figure>
+                                    <figure class="team-leader">
+                                        <img src="/img/people/alissa-lai.jpg" alt="Portrait of Alissa Lai">
+                                        <figcaption>Alissa Lai</figcaption>
+                                    </figure>
                                 </div>
                                 <div class="team-title-box">
                                     EVENT-DRIVEN
@@ -1862,14 +1935,24 @@
                                 <div class="team-title-box">
                                     LONG/SHORT
                                 </div>
-                                <div class="team-description-box">
-                                    <p>The Long/Short team builds differentiated perspectives on companies through rigorous fundamental research and valuation analysis. Members learn to identify long-term winners and short opportunities in competitive markets.</p>
+                                <div class="team-description-box team-leaders team-leaders--single">
+                                    <figure class="team-leader">
+                                        <img src="/img/people/william-qian.jpg" alt="Portrait of William Qian">
+                                        <figcaption>William Qian</figcaption>
+                                    </figure>
                                 </div>
                             </div>
 
                             <div class="team-item-row right-aligned">
-                                <div class="team-description-box">
-                                    <p>The Prediction Markets &amp; Quant Strategies team treats prices as probabilities and models as a way to find edge. Members study event contracts, statistical signals, and systematic frameworks to build disciplined views where data and market structure meet.</p>
+                                <div class="team-description-box team-leaders team-leaders--square">
+                                    <figure class="team-leader">
+                                        <img src="/img/people/hiya-ray.jpg" alt="Portrait of Hiya Ray">
+                                        <figcaption>Hiya Ray</figcaption>
+                                    </figure>
+                                    <figure class="team-leader">
+                                        <img src="/img/people/pranav-karthikeyan.jpg" alt="Portrait of Pranav Karthikeyan">
+                                        <figcaption>Pranav Karthikeyan</figcaption>
+                                    </figure>
                                 </div>
                                 <div class="team-title-box team-title-box--wide">
                                     <span>Prediction Markets</span>
