@@ -712,9 +712,9 @@
         /* Leader portraits sit where the team description used to be */
         .team-description-box.team-leaders {
             box-sizing: border-box;
-            width: 690px;
-            max-width: 690px;
-            flex: 1 1 420px;
+            width: max-content;
+            max-width: 100%;
+            flex: 0 1 auto;
             min-width: 0;
             justify-content: center;
             align-items: flex-start;
@@ -723,42 +723,33 @@
         }
         .team-leader {
             margin: 0;
-            flex: 1 1 0;
-            min-width: 0;
+            flex: 0 0 200px;
+            width: 200px;
         }
         .team-leader img {
-            width: 100%;
-            aspect-ratio: 3 / 2;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-            object-position: center 22%;
+            object-position: center center;
             display: block;
             border-radius: 2px;
         }
         .team-leader figcaption {
             margin-top: 10px;
             font-family: "Times New Roman", Times, serif;
-            font-size: 18px;
             line-height: 1.2;
             color: #23344E;
         }
-        .team-leaders--single .team-leader {
-            flex: 0 1 240px;
-            width: 240px;
-            max-width: 100%;
+        .team-leader__name {
+            display: block;
+            font-size: 18px;
         }
-        .team-leaders--single .team-leader img {
-            aspect-ratio: 1 / 1;
-            object-position: center center;
-        }
-        .left-aligned .team-leaders--single {
-            justify-content: flex-start;
-        }
-        .right-aligned .team-leaders--single {
-            justify-content: flex-end;
-        }
-        .team-leaders--square .team-leader img {
-            aspect-ratio: 1 / 1;
-            object-position: center center;
+        .team-leader__role {
+            display: block;
+            margin-top: 4px;
+            font-size: 14px;
+            font-style: italic;
+            color: #4b5563;
         }
 
         /* Mobile Adjustments for Team Section (stacked, tighter overlap) */
@@ -793,11 +784,24 @@
                 text-align: left !important;
             }
             .team-description-box.team-leaders {
+                width: 100% !important;
                 text-align: center !important;
+                justify-content: center !important;
                 gap: 14px;
             }
-            .team-description-box.team-leaders.team-leaders--single {
-                justify-content: center !important;
+            .team-leader {
+                flex: 1 1 0;
+                width: auto;
+                max-width: 200px;
+            }
+            .team-leaders--single .team-leader {
+                flex: 0 0 calc(50% - 7px);
+                width: calc(50% - 7px);
+            }
+            .team-leader img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1;
             }
         }
 
@@ -1900,63 +1904,63 @@
                         <div class="team-grid-container">
 
                             <div class="team-item-row left-aligned">
-                                <div class="team-title-box">
-                                    GLOBAL MACRO
+                                <div class="team-title-box team-title-box--wide">
+                                    <span>Prediction Markets</span>
+                                    <span>&amp; Quant Strategies</span>
                                 </div>
                                 <div class="team-description-box team-leaders">
                                     <figure class="team-leader">
-                                        <img src="/img/people/christian-ruiz.jpg" alt="Portrait of Christian Ruiz">
-                                        <figcaption>Christian Ruiz</figcaption>
+                                        <img src="/img/people/hiya-ray.jpg" alt="Portrait of Hiya Ray">
+                                        <figcaption><span class="team-leader__name">Hiya Ray</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                     <figure class="team-leader">
-                                        <img src="/img/people/parker-koch.jpg" alt="Portrait of Parker Koch">
-                                        <figcaption>Parker Koch</figcaption>
+                                        <img src="/img/people/pranav-karthikeyan.jpg?v=2" alt="Portrait of Pranav Karthikeyan">
+                                        <figcaption><span class="team-leader__name">Pranav Karthikeyan</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                 </div>
                             </div>
 
                             <div class="team-item-row right-aligned">
-                                <div class="team-description-box team-leaders team-leaders--square">
+                                <div class="team-description-box team-leaders">
                                     <figure class="team-leader">
-                                        <img src="/img/people/shogo-oconnor.jpg" alt="Portrait of Shogo O'Connor">
-                                        <figcaption>Shogo O'Connor</figcaption>
+                                        <img src="/img/people/christian-ruiz.jpg" alt="Portrait of Christian Ruiz">
+                                        <figcaption><span class="team-leader__name">Christian Ruiz</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                     <figure class="team-leader">
-                                        <img src="/img/people/alissa-lai.jpg" alt="Portrait of Alissa Lai">
-                                        <figcaption>Alissa Lai</figcaption>
+                                        <img src="/img/people/parker-koch.jpg" alt="Portrait of Parker Koch">
+                                        <figcaption><span class="team-leader__name">Parker Koch</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                 </div>
                                 <div class="team-title-box">
-                                    EVENT-DRIVEN
+                                    GLOBAL MACRO
                                 </div>
                             </div>
 
                             <div class="team-item-row left-aligned">
                                 <div class="team-title-box">
-                                    LONG/SHORT
+                                    EVENT-DRIVEN
                                 </div>
-                                <div class="team-description-box team-leaders team-leaders--single">
+                                <div class="team-description-box team-leaders">
                                     <figure class="team-leader">
-                                        <img src="/img/people/william-qian.jpg?v=2" alt="Portrait of William Qian">
-                                        <figcaption>William Qian</figcaption>
+                                        <img src="/img/people/shogo-oconnor.jpg" alt="Portrait of Shogo O'Connor">
+                                        <figcaption><span class="team-leader__name">Shogo O'Connor</span><span class="team-leader__role">Team Leader</span></figcaption>
+                                    </figure>
+                                    <figure class="team-leader">
+                                        <img src="/img/people/alissa-lai.jpg" alt="Portrait of Alissa Lai">
+                                        <figcaption><span class="team-leader__name">Alissa Lai</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                 </div>
                             </div>
 
                             <div class="team-item-row right-aligned">
-                                <div class="team-description-box team-leaders team-leaders--square">
+                                <div class="team-description-box team-leaders team-leaders--single">
                                     <figure class="team-leader">
-                                        <img src="/img/people/hiya-ray.jpg" alt="Portrait of Hiya Ray">
-                                        <figcaption>Hiya Ray</figcaption>
-                                    </figure>
-                                    <figure class="team-leader">
-                                        <img src="/img/people/pranav-karthikeyan.jpg" alt="Portrait of Pranav Karthikeyan">
-                                        <figcaption>Pranav Karthikeyan</figcaption>
+                                        <img src="/img/people/william-qian.jpg?v=2" alt="Portrait of William Qian">
+                                        <figcaption><span class="team-leader__name">William Qian</span><span class="team-leader__role">Team Leader</span></figcaption>
                                     </figure>
                                 </div>
-                                <div class="team-title-box team-title-box--wide">
-                                    <span>Prediction Markets</span>
-                                    <span>&amp; Quant Strategies</span>
+                                <div class="team-title-box">
+                                    LONG/SHORT
                                 </div>
                             </div>
                         </div>
